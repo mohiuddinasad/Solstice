@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solstice Travel Co. — Journeys Worth Telling</title>
+  <meta name="description"
+    content="Solstice Travel Co. designs private, fully-guided journeys to the world's most remarkable places.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom -->
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar navbar-expand-lg container-fluid px-4 px-lg-5 py-3">
+      <a class="brand" href="#top">
+        <span class="brand-mark">S</span>
+        <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+      </a>
+
+      <button class="nav-toggle d-lg-none" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
+        <a href="index.html" class="is-active-link">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="visa.html">Visa Processing</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking.html" class="btn btn-plan">Book Now</a>
+      </div>
+    </nav>
+
+    <!-- mobile menu panel -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="is-active-link">Home</a>
+      <a href="packages.html">Packages</a>
+      <a href="visa.html">Visa Processing</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="btn btn-plan mt-3">Book Now</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-7 hero-copy">
+          <p class="eyebrow-plain">Private journeys, planned by hand</p>
+          <h1 style="font-size: 50px;">Go somewhere<br> that changes<br> how you <span class="ital">see</span> things.</h1>
+          <p class="hero-sub">We design fully-guided trips for people who'd rather hand the logistics to someone who's
+            actually been there — and been there properly.</p>
+
+          <form class="finder card-panel" id="finderForm" novalidate>
+            <div class="finder-row">
+              <div class="finder-field">
+                <label for="destInput">Where to</label>
+                <input type="text" id="destInput" placeholder="Say a place, or a feeling" required>
+              </div>
+              <div class="finder-field">
+                <label for="whenInput">When</label>
+                <input type="text" id="whenInput" placeholder="Month, or flexible">
+              </div>
+              <div class="finder-field">
+                <label for="travelersInput">Travelers</label>
+                <select id="travelersInput">
+                  <option>Just me</option>
+                  <option selected>Two</option>
+                  <option>Family</option>
+                  <option>Group of friends</option>
+                </select>
+              </div>
+            </div>
+            <div class="finder-feedback" id="finderFeedback" aria-live="polite"></div>
+            <button type="submit" class="btn btn-finder">Start planning</button>
+          </form>
+          <p class="section-note mt-3" style="font-size:0.88rem;">Or browse <a href="packages.html"
+              style="color:var(--teal); font-weight:700;">ready-made packages</a> instead.</p>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="hero-collage">
+            <img class="collage-img collage-a"
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000&auto=format&fit=crop"
+              alt="Coastal cliffs and turquoise water">
+            <img class="collage-img collage-b"
+              src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop"
+              alt="Traveler looking over a mountain valley">
+            <div class="collage-note">
+              <span class="collage-note-num">14</span>
+              <span>years designing trips people still talk about</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="trust-strip">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row text-center gy-4">
+        <div class="col-6 col-md-3">
+          <span class="stat" data-count="46">0</span>
+          <p>countries covered</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <span class="stat" data-count="2300">0</span>
+          <p>journeys planned</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <span class="stat" data-count="14">0</span>
+          <p>years in business</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <span class="stat" data-count="98" data-suffix="%">0</span>
+          <p>would travel with us again</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESTINATIONS ============ -->
+  <section class="destinations" id="destinations">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <p class="eyebrow-plain">Where people are going this year</p>
+          <h2>Destinations we know<br>better than the guidebooks</h2>
+        </div>
+        <div class="col-lg-6 d-flex align-items-end justify-content-lg-end">
+          <p class="section-note">Each route below is one we've walked ourselves — we only sell what we'd take our own
+            families on.</p>
+        </div>
+      </div>
+
+      <div class="dest-grid">
+        <a href="packages.html" class="dest-card dest-card--tall">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop"
+            alt="Rice terraces in Bali">
+          <div class="dest-info">
+            <h3>Bali &amp; the Lesser Sundas</h3>
+            <p>Rice terraces, reef, and quiet temples inland</p>
+            <span class="dest-price">from $2,450</span>
+          </div>
+        </a>
+        <a href="packages.html" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop"
+            alt="Whitewashed buildings in Santorini">
+          <div class="dest-info">
+            <h3>Santorini &amp; the Cyclades</h3>
+            <p>Island-hopping, off the cruise-ship hours</p>
+            <span class="dest-price">from $3,100</span>
+          </div>
+        </a>
+        <a href="packages.html" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop"
+            alt="Traditional temple gate in Kyoto">
+          <div class="dest-info">
+            <h3>Kyoto &amp; the Kii Peninsula</h3>
+            <p>Old Japan, at the pace it deserves</p>
+            <span class="dest-price">from $3,650</span>
+          </div>
+        </a>
+        <a href="packages.html" class="dest-card dest-card--wide">
+          <img src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=1000&auto=format&fit=crop"
+            alt="Mountain range in Patagonia">
+          <div class="dest-info">
+            <h3>Patagonia</h3>
+            <p>Glaciers, granite towers, and long silences</p>
+            <span class="dest-price">from $4,200</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY CHOOSE US ============ -->
+  <section class="experiences" id="experiences-why">
+    <div class="container-fluid px-4 px-lg-5">
+      <p class="eyebrow-plain">Why travelers come back to us</p>
+      <h2>Everything a real trip needs, under one roof</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <i class="bi bi-map"></i>
+          <h3>Hand-built itineraries</h3>
+          <p>Every route is written by a planner who's been there — never a templated package.</p>
+        </div>
+        <div class="feature-card">
+          <i class="bi bi-person-vcard"></i>
+          <h3>Visa processing, in-house</h3>
+          <p>Tourist, business and student visas handled alongside your booking, not outsourced.</p>
+        </div>
+        <div class="feature-card">
+          <i class="bi bi-calendar-check"></i>
+          <h3>Simple online booking</h3>
+          <p>Pick a package, add travelers, and confirm — no back-and-forth over email required.</p>
+        </div>
+        <div class="feature-card">
+          <i class="bi bi-headset"></i>
+          <h3>Support while you travel</h3>
+          <p>A local contact reachable for the length of your trip on our Voyager and Bespoke tiers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POPULAR PACKAGES (tabs) ============ -->
+  <section class="popular" id="popular">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-end gy-2 mb-4">
+        <div class="col-lg-8">
+          <p class="eyebrow-plain">Popular right now</p>
+          <h2 class="mb-0">Pick a style of trip, see what's running</h2>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="packages.html" style="color:var(--teal); font-weight:700;">See all packages &rarr;</a>
+        </div>
+      </div>
+      <div class="filter-scroll mb-4">
+        <div class="filter-bar" id="homeTabs" role="tablist" aria-label="Trip style">
+          <button class="filter-btn is-active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="beach">Beach</button>
+          <button class="filter-btn" data-filter="adventure">Adventure</button>
+          <button class="filter-btn" data-filter="cultural">Cultural</button>
+          <button class="filter-btn" data-filter="honeymoon">Honeymoon</button>
+          <button class="filter-btn" data-filter="family">Family</button>
+        </div>
+      </div>
+      <div class="package-grid" id="homePackageGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="experiences" id="experiences">
+    <div class="container-fluid px-4 px-lg-5">
+      <p class="eyebrow-plain">How a Solstice trip comes together</p>
+      <h2>Four calls, then you just show up</h2>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Tell us how you actually travel</h3>
+          <p>Not a questionnaire — a real conversation about pace, budget, and what "relaxing" means to you.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>We draft a route</h3>
+          <p>A day-by-day plan built from places we've stayed and guides we trust, not a template.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>You adjust anything</h3>
+          <p>Swap a city, add a day, cut something that sounds like a chore. It's your trip.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <h3>We handle the rest</h3>
+          <p>Bookings, transfers, and a local contact on call for the whole trip, in case anything shifts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PACKAGES / JOURNEYS ============ -->
+  <section class="journeys" id="journeys">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-end mb-2">
+        <div class="col-lg-8">
+          <p class="eyebrow-plain">Starting points, not fixed packages</p>
+          <h2>Three ways to start the conversation</h2>
+        </div>
+        <div class="col-lg-4 text-lg-end mb-4">
+          <a href="packages.html" style="color:var(--teal); font-weight:700;">Browse all trip packages &rarr;</a>
+        </div>
+      </div>
+
+      <div class="journey-cards">
+        <div class="journey-card">
+          <h3>Explorer</h3>
+          <p class="journey-desc">A well-built route for travelers happy to handle a few things themselves once there.
+          </p>
+          <ul>
+            <li>Full itinerary &amp; booking list</li>
+            <li>Hand-picked stays</li>
+            <li>Email support before you go</li>
+          </ul>
+          <span class="journey-price">from $1,800 <small>per person</small></span>
+          <a href="booking.html" class="btn btn-outline-journey">Start here</a>
+        </div>
+
+        <div class="journey-card journey-card--featured">
+          <span class="journey-tag">Most requested</span>
+          <h3>Voyager</h3>
+          <p class="journey-desc">Everything booked and confirmed, plus a local contact reachable for the length of the
+            trip.</p>
+          <ul>
+            <li>Everything in Explorer</li>
+            <li>All transfers &amp; local guides</li>
+            <li>24/7 contact while traveling</li>
+            <li>One route revision included</li>
+          </ul>
+          <span class="journey-price">from $3,200 <small>per person</small></span>
+          <a href="booking.html" class="btn btn-journey">Start here</a>
+        </div>
+
+        <div class="journey-card">
+          <h3>Bespoke</h3>
+          <p class="journey-desc">Multi-country or multi-generational trips, planned from a blank page with no template
+            at all.</p>
+          <ul>
+            <li>Everything in Voyager</li>
+            <li>Private guide throughout</li>
+            <li>Unlimited revisions</li>
+          </ul>
+          <span class="journey-price">custom quote</span>
+          <a href="contact.html" class="btn btn-outline-journey">Start here</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="stories" id="stories">
+    <div class="container-fluid px-4 px-lg-5">
+      <p class="eyebrow-plain">In their words</p>
+      <h2>What it's like once you've handed it over</h2>
+
+      <div class="story-slider">
+        <button class="story-arrow story-arrow--prev" id="storyPrev" aria-label="Previous story">&larr;</button>
+
+        <div class="story-track" id="storyTrack">
+          <blockquote class="story-slide is-active">
+            <p>They rebuilt our whole Japan route after our flight changed, before we'd even landed to ask about it.</p>
+            <cite>Farhana R. — Kyoto &amp; Osaka, 2025</cite>
+          </blockquote>
+          <blockquote class="story-slide">
+            <p>We told them we hated "tour" energy. Nothing on the trip felt like a tour.</p>
+            <cite>Michael D. — Patagonia, 2024</cite>
+          </blockquote>
+          <blockquote class="story-slide">
+            <p>Booked three generations, four cities, one villa. Not one handoff went wrong.</p>
+            <cite>The Chowdhury family — Santorini &amp; Athens, 2025</cite>
+          </blockquote>
+        </div>
+
+        <button class="story-arrow story-arrow--next" id="storyNext" aria-label="Next story">&rarr;</button>
+      </div>
+
+      <div class="story-dots" id="storyDots"></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="contact" id="contact">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="card-panel p-4 p-lg-5 text-center" style="background: var(--ink); border-color: var(--ink);">
+        <p class="eyebrow-plain" style="color: var(--sand);">Let's start</p>
+        <h2 style="color:#fff; margin-inline:auto;">Tell us about the trip you keep putting off</h2>
+        <p style="color: rgba(251,250,247,0.75); max-width:52ch; margin: 0 auto 2rem;">No obligation, no generic quote —
+          just a real answer from a person who plans routes for a living.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="contact.html" class="btn btn-plan" style="background: var(--sand); color: var(--ink);">Talk to a
+            planner</a>
+          <a href="booking.html" class="btn btn-plan"
+            style="background: transparent; border: 1.5px solid rgba(251,250,247,0.4); color:#fff;">Start a booking</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <a class="brand brand--footer" href="#top">
+            <span class="brand-mark">S</span>
+            <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+          </a>
+          <p class="footer-note">Private, fully-guided journeys — planned by people who've actually been there.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4>Explore</h4>
+          <a href="packages.html">Packages</a>
+          <a href="visa.html">Visa Processing</a>
+          <a href="booking.html">Book a trip</a>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4>Company</h4>
+          <a href="about.html">About us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="col-lg-4">
+          <h4>Stay in the loop</h4>
+          <form class="newsletter" id="newsletterForm">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
+          </form>
+          <div class="newsletter-note" id="newsletterNote"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> Solstice Travel Co. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery + JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="assets/data.js"></script>
+  <script src="assets/script.js"></script>
+</body>
+
+</html>

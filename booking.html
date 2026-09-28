@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Trip — Solstice Travel Co.</title>
+<meta name="description" content="Book a Solstice Travel Co. package in three steps — trip details, traveler information, and review.">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <nav class="navbar navbar-expand-lg container-fluid px-4 px-lg-5 py-3">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">S</span>
+      <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+    </a>
+    <button class="nav-toggle d-lg-none" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="packages.html">Packages</a>
+      <a href="visa.html">Visa Processing</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="btn btn-plan">Book Now</a>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="packages.html">Packages</a>
+    <a href="visa.html">Visa Processing</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking.html" class="btn btn-plan mt-3">Book Now</a>
+  </div>
+</header>
+
+<section class="page-banner">
+  <div class="container-fluid px-4 px-lg-5">
+    <p class="crumb"><a href="index.html">Home</a> / Booking</p>
+    <h1>Book your trip</h1>
+    <p>Three short steps — trip details, travelers, then a review before anything's confirmed.</p>
+  </div>
+</section>
+
+<section class="contact" style="padding-top:4rem;">
+  <div class="container-fluid px-4 px-lg-5">
+
+    <!-- ============ PROGRESS ============ -->
+    <div class="wizard-progress" id="wizardProgress" style="--p:0;">
+      <div class="wizard-step-indicator is-active" data-step="1"><span class="dot">1</span><span class="label">Trip details</span></div>
+      <div class="wizard-step-indicator" data-step="2"><span class="dot">2</span><span class="label">Travelers</span></div>
+      <div class="wizard-step-indicator" data-step="3"><span class="dot">3</span><span class="label">Review &amp; confirm</span></div>
+    </div>
+
+    <form id="bookingForm" novalidate>
+      <div class="row gy-4 gx-xl-5">
+        <div class="col-lg-7">
+
+          <!-- ============ STEP 1 ============ -->
+          <div class="wizard-panel is-active" data-panel="1">
+            <div class="panel-head">
+              <span class="panel-step">Step 1 of 3</span>
+              <h2>Choose your trip</h2>
+              <p class="section-note">Pick a package and dates &mdash; your planner will fine-tune everything with you afterwards.</p>
+            </div>
+            <div class="card-panel form-card">
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="field field--static">
+                    <i class="bi bi-geo-alt f-icon"></i>
+                    <select id="bkPackage"></select>
+                    <label for="bkPackage">Package</label>
+                    <div class="field-error">Please choose a package.</div>
+                  </div>
+                  <div class="pkg-preview" id="pkgPreview">
+                    <img id="pkgPrevImg" src="" alt="">
+                    <div><strong id="pkgPrevName"></strong><span id="pkgPrevMeta"></span></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="field field--static">
+                    <i class="bi bi-calendar-event f-icon"></i>
+                    <input type="date" id="bkDate">
+                    <label for="bkDate">Departure date</label>
+                    <div class="field-error">Please choose a departure date.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="stepper">
+                    <span class="s-label">Travelers</span>
+                    <span class="s-value" id="bkTravelersLabel">2</span>
+                    <input type="hidden" id="bkTravelers" value="2">
+                    <div class="s-btns">
+                      <button type="button" data-stepper="-1" aria-label="Fewer travelers">&minus;</button>
+                      <button type="button" data-stepper="1" aria-label="More travelers">+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <p class="group-label">Room preference</p>
+                  <div class="choice-grid">
+                    <label class="choice"><input type="radio" name="room" value="Double / shared room" data-extra="0" checked>
+                      <span class="choice-body"><i class="bi bi-people ci"></i><strong>Double / shared</strong><small>Best value per person</small></span></label>
+                    <label class="choice"><input type="radio" name="room" value="Single room" data-extra="150">
+                      <span class="choice-body"><i class="bi bi-person ci"></i><strong>Single room</strong><small>+$150 per person</small></span></label>
+                    <label class="choice"><input type="radio" name="room" value="Family room" data-extra="0">
+                      <span class="choice-body"><i class="bi bi-house-heart ci"></i><strong>Family room</strong><small>Sleeps 3&ndash;5 together</small></span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn btn-journey btn-inline" data-next="2">Continue to travelers <i class="bi bi-arrow-right ms-1"></i></button>
+            </div>
+          </div>
+
+          <!-- ============ STEP 2 ============ -->
+          <div class="wizard-panel" data-panel="2">
+            <div class="panel-head">
+              <span class="panel-step">Step 2 of 3</span>
+              <h2>Who's travelling?</h2>
+              <p class="section-note">We'll send your confirmation to the contact details below.</p>
+            </div>
+
+            <div class="card-panel form-card mb-4">
+              <h3 class="card-title-sm">Contact details</h3>
+              <p class="section-note mb-3" style="font-size:.86rem;">Where should we reach the lead traveler?</p>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="field"><i class="bi bi-envelope f-icon"></i><input type="email" id="bkEmail" placeholder=" " autocomplete="email"><label for="bkEmail">Email address</label><div class="field-error">Please add a valid email.</div></div>
+                </div>
+                <div class="col-md-6">
+                  <div class="field"><i class="bi bi-telephone f-icon"></i><input type="tel" id="bkPhone" placeholder=" " autocomplete="tel"><label for="bkPhone">Phone / WhatsApp</label><div class="field-error">Please add a phone number.</div></div>
+                </div>
+                <div class="col-12">
+                  <div class="field"><i class="bi bi-buildings f-icon"></i><input type="text" id="bkCity" placeholder=" " autocomplete="address-level2"><label for="bkCity">City (optional)</label></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="travelerList"></div>
+            <button type="button" class="btn-ghost mb-2" id="addTraveler"><i class="bi bi-plus-circle me-1"></i> Add another traveler</button>
+
+            <div class="wizard-nav">
+              <button type="button" class="btn btn-outline-journey btn-inline" data-prev="1"><i class="bi bi-arrow-left me-1"></i> Back</button>
+              <button type="button" class="btn btn-journey btn-inline" data-next="3">Continue to review <i class="bi bi-arrow-right ms-1"></i></button>
+            </div>
+          </div>
+
+          <!-- ============ STEP 3 ============ -->
+          <div class="wizard-panel" data-panel="3">
+            <div class="panel-head">
+              <span class="panel-step">Step 3 of 3</span>
+              <h2>Review &amp; confirm</h2>
+              <p class="section-note">Nothing is charged yet &mdash; this sends a booking request for our team to verify.</p>
+            </div>
+
+            <div id="reviewOutput"></div>
+
+            <div class="card-panel form-card mt-4">
+              <p class="group-label">How would you like to pay?</p>
+              <div class="choice-grid mb-4">
+                <label class="choice"><input type="radio" name="payment" value="30% deposit online" checked>
+                  <span class="choice-body"><i class="bi bi-credit-card ci"></i><strong>Deposit online</strong><small>30% via card or mobile banking link</small></span></label>
+                <label class="choice"><input type="radio" name="payment" value="Bank transfer">
+                  <span class="choice-body"><i class="bi bi-bank ci"></i><strong>Bank transfer</strong><small>Details sent by email</small></span></label>
+                <label class="choice"><input type="radio" name="payment" value="Pay at office">
+                  <span class="choice-body"><i class="bi bi-shop ci"></i><strong>Pay at office</strong><small>Bahaddarhat, Chattogram</small></span></label>
+              </div>
+
+              <div class="field field--plain">
+                <textarea id="bkNotes" rows="3" placeholder=" "></textarea>
+                <label for="bkNotes">Special requests (dietary, accessibility, celebrations&hellip;)</label>
+              </div>
+
+              <label class="check-line mt-3"><input type="checkbox" id="bkTerms"> <span>I agree to the booking terms and cancellation policy.</span></label>
+              <div class="field-error" id="termsError" style="display:none;">Please accept the booking terms to continue.</div>
+            </div>
+
+            <div class="wizard-nav">
+              <button type="button" class="btn btn-outline-journey btn-inline" data-prev="2"><i class="bi bi-arrow-left me-1"></i> Back</button>
+              <button type="submit" class="btn btn-journey btn-inline btn-confirm">Confirm booking</button>
+            </div>
+          </div>
+
+          <!-- ============ SUCCESS ============ -->
+          <div class="wizard-panel" data-panel="success">
+            <div class="card-panel booking-ref">
+              <svg class="success-check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="25"/><path d="M14 27l8 8 16-16"/></svg>
+              <p class="mb-0 mt-3">Booking request received. Your reference number:</p>
+              <span class="code" id="bookingRefCode">SOL-000000</span>
+              <p class="section-note mx-auto">We'll email a confirmation and next steps within one business day. This reference isn't a final confirmation until our team verifies availability.</p>
+              <a href="index.html" class="btn btn-plan mt-2">Back to home</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ============ SUMMARY SIDEBAR ============ -->
+        <div class="col-lg-5">
+          <aside class="summary-card" id="summaryCard">
+            <img class="summary-thumb" id="sumThumb" src="" alt="">
+            <h3>Trip summary</h3>
+            <div class="summary-row"><span>Package</span><span id="sumPackage">&mdash;</span></div>
+            <div class="summary-row"><span>Departure</span><span id="sumDate">&mdash;</span></div>
+            <div class="summary-row"><span>Travelers</span><span id="sumTravelers">&mdash;</span></div>
+            <div class="summary-row"><span>Room</span><span id="sumRoom">&mdash;</span></div>
+            <div class="summary-row"><span>Package price</span><span id="sumBase">$0</span></div>
+            <div class="summary-row"><span>Room supplement</span><span id="sumExtra">$0</span></div>
+            <div class="summary-row total"><span>Estimated total</span><span id="sumTotal">$0</span></div>
+            <div class="summary-row deposit"><span>Deposit to confirm (30%)</span><span id="sumDeposit">$0</span></div>
+            <ul class="trust-list">
+              <li><i class="bi bi-shield-check"></i> No payment taken on this form</li>
+              <li><i class="bi bi-chat-dots"></i> A planner reviews every request</li>
+              <li><i class="bi bi-arrow-repeat"></i> Adjust anything before you pay</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<!-- mobile / tablet running total -->
+<div class="mobile-total" id="mobileTotal">
+  <div><small>Estimated total</small><strong id="mobileTotalValue">$0</strong></div>
+  <span id="mobileStepLabel">Step 1 of 3</span>
+</div>
+
+<footer class="site-footer">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <a class="brand brand--footer" href="index.html">
+          <span class="brand-mark">S</span>
+          <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+        </a>
+        <p class="footer-note">Private, fully-guided journeys — planned by people who've actually been there.</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4>Explore</h4>
+        <a href="packages.html">Packages</a>
+        <a href="visa.html">Visa Processing</a>
+        <a href="booking.html">Book a trip</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4>Company</h4>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-4">
+        <h4>Stay in the loop</h4>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
+        </form>
+        <div class="newsletter-note" id="newsletterNote"></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Solstice Travel Co. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/script.js"></script>
+</body>
+</html>
