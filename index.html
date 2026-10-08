@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solstice Travel Co. — Journeys Worth Telling</title>
+  <meta name="description"
+    content="Solstice Travel Co. designs private, fully-guided journeys to the world's most remarkable places.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom -->
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar navbar-expand-lg container-fluid px-4 px-lg-5 py-3">
+      <a class="brand" href="#top">
+        <span class="brand-mark">S</span>
+        <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+      </a>
+
+      <button class="nav-toggle d-lg-none" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
+        <a href="index.html" class="is-active-link">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="visa.html">Visa Processing</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking.html" class="btn btn-plan">Book Now</a>
+      </div>
+    </nav>
+
+    <!-- mobile menu panel -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="is-active-link">Home</a>
+      <a href="packages.html">Packages</a>
+      <a href="visa.html">Visa Processing</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="btn btn-plan mt-3">Book Now</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-7 hero-copy">
+          <p class="eyebrow-plain">Private journeys, planned by hand</p>
+          <h1>Go somewhere that changes how you <span class="ital">see</span> things.</h1>
+          <p class="hero-sub">Fully-guided trips, planned by people who've been there.</p>
+
+          <form class="finder card-panel" id="finderForm" novalidate>
+            <div class="finder-row">
+              <div class="finder-field">
+                <label for="destInput">Where to</label>
+                <input type="text" id="destInput" placeholder="A place, or a feeling" required>
+              </div>
+              <div class="finder-field">
+                <label for="whenInput">When</label>
+                <input type="text" id="whenInput" placeholder="Month, or flexible">
+              </div>
+              <div class="finder-field">
+                <label for="travelersInput">Travelers</label>
+                <select id="travelersInput">
+                  <option>Just me</option>
+                  <option selected>Two</option>
+                  <option>Family</option>
+                  <option>Group of friends</option>
+                </select>
+              </div>
+            </div>
+            <div class="finder-feedback" id="finderFeedback" aria-live="polite"></div>
+            <button type="submit" class="btn btn-finder">Start planning</button>
+          </form>
+          <p class="section-note mt-3" style="font-size:.88rem;">Or browse <a href="packages.html"
+              style="color:var(--teal); font-weight:700;">ready-made packages</a>.</p>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="hero-collage">
+            <img class="collage-img collage-a"
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000&auto=format&fit=crop"
+              alt="Coastal cliffs and turquoise water">
+            <img class="collage-img collage-b"
+              src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop"
+              alt="Traveler looking over a mountain valley">
+            <div class="collage-note">
+              <span class="collage-note-num">14</span>
+              <span>years planning trips</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="trust-strip">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row text-center gy-4">
+        <div class="col-6 col-md-3"><span class="stat" data-count="46">0</span>
+          <p>countries</p>
+        </div>
+        <div class="col-6 col-md-3"><span class="stat" data-count="2300">0</span>
+          <p>journeys planned</p>
+        </div>
+        <div class="col-6 col-md-3"><span class="stat" data-count="14">0</span>
+          <p>years</p>
+        </div>
+        <div class="col-6 col-md-3"><span class="stat" data-count="98" data-suffix="%">0</span>
+          <p>travel with us again</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESTINATIONS ============ -->
+  <section class="destinations" id="destinations">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row">
+        <div class="col-lg-7">
+          <p class="eyebrow-plain">Where people are going</p>
+          <h2>Destinations we know well</h2>
+        </div>
+      </div>
+
+      <div class="dest-grid">
+        <a href="packages.html" class="dest-card dest-card--tall">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop"
+            alt="Rice terraces in Bali">
+          <div class="dest-info">
+            <h3>Bali</h3>
+            <p>Terraces &amp; reef</p><span class="dest-price">from $2,450</span>
+          </div>
+        </a>
+        <a href="packages.html" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop"
+            alt="Whitewashed buildings in Santorini">
+          <div class="dest-info">
+            <h3>Santorini</h3>
+            <p>Island-hopping</p><span class="dest-price">from $3,100</span>
+          </div>
+        </a>
+        <a href="packages.html" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop"
+            alt="Temple gate in Kyoto">
+          <div class="dest-info">
+            <h3>Kyoto</h3>
+            <p>Old Japan</p><span class="dest-price">from $3,650</span>
+          </div>
+        </a>
+        <a href="packages.html" class="dest-card dest-card--wide">
+          <img src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=1000&auto=format&fit=crop"
+            alt="Mountains in Patagonia">
+          <div class="dest-info">
+            <h3>Patagonia</h3>
+            <p>Glaciers &amp; granite</p><span class="dest-price">from $4,200</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="experiences" id="why">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-5">
+          <div class="why-img">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1000&auto=format&fit=crop"
+              alt="Mountain valley at sunrise">
+            <div class="why-badge"><strong>98%</strong>travel with us again</div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <p class="eyebrow-plain">Why Solstice</p>
+          <h2>Everything a trip needs, in one place</h2>
+          <div class="why-list">
+            <div class="why-item"><i class="bi bi-map"></i>
+              <div>
+                <h3>Hand-built routes</h3>
+                <p>No templates.</p>
+              </div>
+            </div>
+            <div class="why-item"><i class="bi bi-person-vcard"></i>
+              <div>
+                <h3>In-house visas</h3>
+                <p>Handled with your booking.</p>
+              </div>
+            </div>
+            <div class="why-item"><i class="bi bi-calendar-check"></i>
+              <div>
+                <h3>Simple booking</h3>
+                <p>Book online in minutes.</p>
+              </div>
+            </div>
+            <div class="why-item"><i class="bi bi-headset"></i>
+              <div>
+                <h3>Help on the road</h3>
+                <p>A local contact on call.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POPULAR PACKAGES (tabs) ============ -->
+  <section class="popular" id="popular">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-end gy-2 mb-4">
+        <div class="col-lg-8">
+          <p class="eyebrow-plain">Popular right now</p>
+          <h2 class="mb-0">Pick a trip style</h2>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="packages.html" style="color:var(--teal); font-weight:700;">See all packages &rarr;</a>
+        </div>
+      </div>
+      <div class="filter-scroll mb-4">
+        <div class="filter-bar" id="homeTabs" role="tablist" aria-label="Trip style">
+          <button class="filter-btn is-active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="beach">Beach</button>
+          <button class="filter-btn" data-filter="adventure">Adventure</button>
+          <button class="filter-btn" data-filter="cultural">Cultural</button>
+          <button class="filter-btn" data-filter="honeymoon">Honeymoon</button>
+          <button class="filter-btn" data-filter="family">Family</button>
+        </div>
+      </div>
+      <div class="package-grid" id="homePackageGrid">
+        <!-- Same cards as packages.html; the tabs show the first 3 that match. -->
+        <article class="package-card" data-id="bali-explorer" data-category="beach" data-price="2450"
+          data-duration="7 nights">
+          <div class="package-card__img">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop"
+              alt="Bali &amp; the Lesser Sundas" loading="lazy">
+            <span class="package-card__badge">Beach</span>
+          </div>
+          <div class="package-card__body">
+            <h3>Bali &amp; the Lesser Sundas</h3>
+            <div class="package-card__meta"><span><i class="bi bi-clock"></i>7 nights</span></div>
+            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Rice terraces, temples and reef time.</p>
+            <div class="package-card__foot">
+              <span class="package-card__price">$2,450<small>per person</small></span>
+              <div class="package-card__actions"><a class="btn-ghost"
+                  href="packages.html?view=bali-explorer">Details</a>
+                <a href="booking.html?package=bali-explorer" class="btn-sm-solid">Book</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-id="santorini-cyclades" data-category="honeymoon" data-price="3100"
+          data-duration="8 nights">
+          <div class="package-card__img">
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop"
+              alt="Santorini &amp; the Cyclades" loading="lazy">
+            <span class="package-card__badge">Honeymoon</span>
+          </div>
+          <div class="package-card__body">
+            <h3>Santorini &amp; the Cyclades</h3>
+            <div class="package-card__meta"><span><i class="bi bi-clock"></i>8 nights</span></div>
+            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Three islands, off cruise-ship hours.</p>
+            <div class="package-card__foot">
+              <span class="package-card__price">$3,100<small>per person</small></span>
+              <div class="package-card__actions"><a class="btn-ghost"
+                  href="packages.html?view=santorini-cyclades">Details</a>
+                <a href="booking.html?package=santorini-cyclades" class="btn-sm-solid">Book</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-id="kyoto-kii" data-category="cultural" data-price="3650"
+          data-duration="9 nights">
+          <div class="package-card__img">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop"
+              alt="Kyoto &amp; the Kii Peninsula" loading="lazy">
+            <span class="package-card__badge">Cultural</span>
+          </div>
+          <div class="package-card__body">
+            <h3>Kyoto &amp; the Kii Peninsula</h3>
+            <div class="package-card__meta"><span><i class="bi bi-clock"></i>9 nights</span></div>
+            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Old Japan, temples before the crowds.</p>
+            <div class="package-card__foot">
+              <span class="package-card__price">$3,650<small>per person</small></span>
+              <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=kyoto-kii">Details</a>
+                <a href="booking.html?package=kyoto-kii" class="btn-sm-solid">Book</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-id="patagonia" data-category="adventure" data-price="4200"
+          data-duration="10 nights">
+          <div class="package-card__img">
+            <img src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=1000&auto=format&fit=crop"
+              alt="Patagonia" loading="lazy">
+            <span class="package-card__badge">Adventure</span>
+          </div>
+          <div class="package-card__body">
+            <h3>Patagonia</h3>
+            <div class="package-card__meta"><span><i class="bi bi-clock"></i>10 nights</span></div>
+            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Glaciers, granite towers, real trekking.
+            </p>
+            <div class="package-card__foot">
+              <span class="package-card__price">$4,200<small>per person</small></span>
+              <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=patagonia">Details</a>
+                <a href="booking.html?package=patagonia" class="btn-sm-solid">Book</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-id="marrakech-atlas" data-category="cultural" data-price="1980"
+          data-duration="6 nights">
+          <div class="package-card__img">
+            <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=900&auto=format&fit=crop"
+              alt="Marrakech &amp; the Atlas" loading="lazy">
+            <span class="package-card__badge">Cultural</span>
+          </div>
+          <div class="package-card__body">
+            <h3>Marrakech &amp; the Atlas</h3>
+            <div class="package-card__meta"><span><i class="bi bi-clock"></i>6 nights</span></div>
+            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Souks, desert camp and Atlas villages.</p>
+            <div class="package-card__foot">
+              <span class="package-card__price">$1,980<small>per person</small></span>
+              <div class="package-card__actions"><a class="btn-ghost"
+                  href="packages.html?view=marrakech-atlas">Details</a>
+                <a href="booking.html?package=marrakech-atlas" class="btn-sm-solid">Book</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card" data-id="swiss-alps" data-category="family" data-price="3850"
+          data-duration="7 nights">
+          <div class="package-card__img">
+            <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=900&auto=format&fit=crop"
+              alt="Swiss Alps Family Trail" loading="lazy">
+            <span class="package-card__badge">Family</span>
+          </div>
+          <div class="package-card__body">
+            <h3>Swiss Alps Family Trail</h3>
+            <div class="package-card__meta"><span><i class="bi bi-clock"></i>7 nights</span></div>
+            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Cable cars and lake towns, kid-friendly.
+            </p>
+            <div class="package-card__foot">
+              <span class="package-card__price">$3,850<small>per person</small></span>
+              <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=swiss-alps">Details</a>
+                <a href="booking.html?package=swiss-alps" class="btn-sm-solid">Book</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- ============ PACKAGES / JOURNEYS ============ -->
+  <section class="journeys" id="journeys">
+    <div class="container-fluid px-4 px-lg-5">
+      <p class="eyebrow-plain">Choose your level of help</p>
+      <h2>Three ways to start</h2>
+
+      <div class="journey-cards">
+        <div class="journey-card">
+          <h3>Explorer</h3>
+          <p class="journey-desc">A solid route, you handle the details.</p>
+          <ul>
+            <li>Full itinerary</li>
+            <li>Hand-picked stays</li>
+            <li>Email support</li>
+          </ul>
+          <span class="journey-price">from $1,800 <small>per person</small></span>
+          <a href="booking.html" class="btn btn-outline-journey">Start here</a>
+        </div>
+
+        <div class="journey-card journey-card--featured">
+          <span class="journey-tag">Most requested</span>
+          <h3>Voyager</h3>
+          <p class="journey-desc">Everything booked, plus local support.</p>
+          <ul>
+            <li>Everything in Explorer</li>
+            <li>Transfers &amp; local guides</li>
+            <li>24/7 trip contact</li>
+          </ul>
+          <span class="journey-price">from $3,200 <small>per person</small></span>
+          <a href="booking.html" class="btn btn-journey">Start here</a>
+        </div>
+
+        <div class="journey-card">
+          <h3>Bespoke</h3>
+          <p class="journey-desc">Planned from a blank page.</p>
+          <ul>
+            <li>Everything in Voyager</li>
+            <li>Private guide</li>
+            <li>Unlimited revisions</li>
+          </ul>
+          <span class="journey-price">custom quote</span>
+          <a href="contact.html" class="btn btn-outline-journey">Start here</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="contact" id="contact">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="card-panel cta-photo p-4 p-lg-5 text-center"
+        style="--bg:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');">
+        <p class="eyebrow-plain" style="color: var(--sand);">Let's start</p>
+        <h2 style="color:#fff; margin-inline:auto;">Ready when you are</h2>
+        <p style="color: rgba(251,250,247,0.8); max-width:40ch; margin: 0 auto 2rem;">Tell us about the trip. We reply
+          within a day.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="contact.html" class="btn btn-plan" style="background: var(--sand); color: var(--ink);">Talk to a
+            planner</a>
+          <a href="booking.html" class="btn btn-plan"
+            style="background: transparent; border: 1.5px solid rgba(251,250,247,0.5); color:#fff;">Start a booking</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <a class="brand brand--footer" href="#top">
+            <span class="brand-mark">S</span>
+            <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+          </a>
+          <p class="footer-note">Private, fully-guided trips.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4>Explore</h4>
+          <a href="packages.html">Packages</a>
+          <a href="visa.html">Visa Processing</a>
+          <a href="booking.html">Book a trip</a>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4>Company</h4>
+          <a href="about.html">About us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="col-lg-4">
+          <h4>Stay in the loop</h4>
+          <form class="newsletter" id="newsletterForm">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
+          </form>
+          <div class="newsletter-note" id="newsletterNote"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> Solstice Travel Co. All rights reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery + JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="assets/script.js"></script>
+</body>
+
+</html>
