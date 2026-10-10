@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotels in Bangladesh — Solstice Travel Co.</title>
+<meta name="description" content="Book hotels and resorts across Bangladesh — Cox's Bazar, Sylhet, Bandarban, Sajek, Saint Martin, Dhaka and Chattogram.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="site-header" id="siteHeader">
+  <nav class="navbar navbar-expand-lg container-fluid px-4 px-lg-5 py-3">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">S</span>
+      <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+    </a>
+    <button class="nav-toggle d-lg-none" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="packages.html">Packages</a>
+      <a href="hotels.html" class="is-active-link">Hotels</a>
+      <a href="visa.html">Visa Processing</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <div class="nav-book">
+        <button type="button" class="btn btn-plan nav-book-btn" aria-haspopup="true" aria-expanded="false">Book Now <i class="bi bi-chevron-down"></i></button>
+        <div class="book-menu" role="menu">
+          <a href="booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-compass"></i></span><span><strong>Tour package</strong><small>Guided trips &amp; holidays</small></span></a>
+          <a href="hotel-booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-building"></i></span><span><strong>Hotel</strong><small>Rooms &amp; resorts in Bangladesh</small></span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="packages.html">Packages</a>
+    <a href="hotels.html" class="is-active-link">Hotels</a>
+    <a href="visa.html">Visa Processing</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-book">
+      <span class="mb-label">Book now</span>
+      <a href="booking.html" class="btn btn-plan"><i class="bi bi-compass"></i> Tour package</a>
+      <a href="hotel-booking.html" class="btn btn-outline-journey"><i class="bi bi-building"></i> Hotel</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PAGE BANNER ============ -->
+<section class="page-banner" style="--bg:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop')">
+  <div class="container-fluid px-4 px-lg-5">
+    <p class="crumb"><a href="index.html">Home</a> / Hotels</p>
+    <h1>Hotels across Bangladesh</h1>
+    <p>Resorts and hotels, priced in &#2547;. Book in minutes.</p>
+  </div>
+</section>
+
+<!-- ============ STAY SEARCH ============ -->
+<section style="padding:0;">
+  <div class="container-fluid px-4 px-lg-5">
+    <form class="stay-search card-panel" id="staySearch" novalidate>
+      <div class="stay-grid">
+        <div class="field field--static"><i class="bi bi-geo-alt f-icon"></i><select id="stayCity"><option value="all">All destinations</option><option value="coxs-bazar">Cox&#x27;s Bazar</option><option value="sylhet">Sylhet</option><option value="bandarban">Bandarban</option><option value="sajek">Sajek</option><option value="saint-martin">Saint Martin</option><option value="dhaka">Dhaka</option><option value="chattogram">Chattogram</option></select><label for="stayCity">Destination</label></div>
+        <div class="field field--static"><i class="bi bi-calendar-event f-icon"></i><input type="date" id="stayIn"><label for="stayIn">Check-in</label></div>
+        <div class="field field--static"><i class="bi bi-calendar-check f-icon"></i><input type="date" id="stayOut"><label for="stayOut">Check-out</label></div>
+        <div class="field field--static"><i class="bi bi-people f-icon"></i><select id="stayGuests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select><label for="stayGuests">Guests</label></div>
+        <button type="submit" class="btn btn-finder"><i class="bi bi-search"></i> Search</button>
+      </div>
+      <div class="stay-feedback" id="stayFeedback" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ HOTELS LIST ============ -->
+<section class="packages-list" style="padding-top:3rem;">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="filter-meta" style="margin-top:0;">
+      <div class="filter-scroll">
+        <div class="filter-bar" id="hotelTabs" role="tablist" aria-label="Destination">
+          <button class="filter-btn is-active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="coxs-bazar">Cox&#x27;s Bazar</button>
+          <button class="filter-btn" data-filter="sylhet">Sylhet</button>
+          <button class="filter-btn" data-filter="bandarban">Bandarban</button>
+          <button class="filter-btn" data-filter="sajek">Sajek</button>
+          <button class="filter-btn" data-filter="saint-martin">Saint Martin</button>
+          <button class="filter-btn" data-filter="dhaka">Dhaka</button>
+          <button class="filter-btn" data-filter="chattogram">Chattogram</button>
+        </div>
+      </div>
+      <div class="search-field">
+        <i class="bi bi-search"></i>
+        <input type="search" id="hotelSearch" placeholder="Search hotel or area" aria-label="Search hotels">
+      </div>
+    </div>
+
+    <div class="toolbar-row">
+      <p class="result-count" id="resultCount" aria-live="polite"></p>
+      <div class="toolbar-controls">
+        <select class="mini-select" id="hotelStars" aria-label="Star rating">
+          <option value="0">Any rating</option><option value="5">5 star</option><option value="4">4 star &amp; up</option><option value="3">3 star &amp; up</option>
+        </select>
+        <select class="mini-select" id="hotelSort" aria-label="Sort hotels">
+          <option value="recommended">Recommended</option><option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option><option value="rating">Top rated</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="package-grid" id="hotelGrid">
+      <!-- One <article class="package-card hotel-card"> per hotel. Later: @foreach($hotels as $hotel) in Blade. -->
+      <article class="package-card hotel-card" data-id="azure-shore" data-category="coxs-bazar" data-stars="5" data-rating="4.7" data-price="12500" data-order="0">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=900&auto=format&fit=crop" alt="Azure Shore Resort" loading="lazy">
+          <span class="package-card__badge">Cox&#x27;s Bazar</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.7</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Azure Shore Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Kolatoli Beach, Cox&#x27;s Bazar</div>
+          <div class="hc-stars" role="img" aria-label="5 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-water"></i> Sea view</span><span><i class="bi bi-droplet-half"></i> Pool</span><span><i class="bi bi-cup-hot"></i> Breakfast</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;12,500<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="azure-shore">Details</button>
+              <a href="hotel-booking.html?hotel=azure-shore" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Beachfront resort near Kolatoli with a pool and sea-view rooms.</p>
+            <ul class="d-amenities">
+              <li>Sea view</li>
+              <li>Pool</li>
+              <li>Breakfast</li>
+              <li>Free WiFi</li>
+              <li>Spa</li>
+              <li>Airport pickup</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Standard Sea View</li>
+              <li>Deluxe Balcony</li>
+              <li>Ocean Suite</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="laboni-sands" data-category="coxs-bazar" data-stars="3" data-rating="4.2" data-price="4200" data-order="1">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=900&auto=format&fit=crop" alt="Laboni Sands Hotel" loading="lazy">
+          <span class="package-card__badge">Cox&#x27;s Bazar</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.2</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Laboni Sands Hotel</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Laboni Point, Cox&#x27;s Bazar</div>
+          <div class="hc-stars" role="img" aria-label="3 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-snow"></i> AC rooms</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;4,200<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="laboni-sands">Details</button>
+              <a href="hotel-booking.html?hotel=laboni-sands" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Clean, simple rooms two minutes from the beach.</p>
+            <ul class="d-amenities">
+              <li>AC rooms</li>
+              <li>Breakfast</li>
+              <li>Free WiFi</li>
+              <li>Restaurant</li>
+              <li>Parking</li>
+              <li>Lift</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Standard</li>
+              <li>Deluxe</li>
+              <li>Family room</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="tea-valley" data-category="sylhet" data-stars="4" data-rating="4.5" data-price="6800" data-order="2">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=900&auto=format&fit=crop" alt="Tea Valley Resort" loading="lazy">
+          <span class="package-card__badge">Sylhet</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.5</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Tea Valley Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Tea Garden Road, Sylhet</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-tree"></i> Tea garden view</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;6,800<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="tea-valley">Details</button>
+              <a href="hotel-booking.html?hotel=tea-valley" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Cottages among tea gardens, about an hour from Sylhet city.</p>
+            <ul class="d-amenities">
+              <li>Tea garden view</li>
+              <li>Breakfast</li>
+              <li>Free WiFi</li>
+              <li>Bonfire evenings</li>
+              <li>Restaurant</li>
+              <li>Parking</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Garden cottage</li>
+              <li>Deluxe cottage</li>
+              <li>Family cottage</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="hill-cloud" data-category="bandarban" data-stars="4" data-rating="4.6" data-price="7500" data-order="3">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=900&auto=format&fit=crop" alt="Hill Cloud Resort" loading="lazy">
+          <span class="package-card__badge">Bandarban</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.6</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Hill Cloud Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Meghla Hills, Bandarban</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-image"></i> Hill view</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-egg-fried"></i> Restaurant</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;7,500<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="hill-cloud">Details</button>
+              <a href="hotel-booking.html?hotel=hill-cloud" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Hilltop resort with valley and cloud views.</p>
+            <ul class="d-amenities">
+              <li>Hill view</li>
+              <li>Breakfast</li>
+              <li>Restaurant</li>
+              <li>Free WiFi</li>
+              <li>Bonfire evenings</li>
+              <li>Trek guide</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Standard hill view</li>
+              <li>Deluxe</li>
+              <li>Cloud suite</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="sajek-sky" data-category="sajek" data-stars="3" data-rating="4.4" data-price="5500" data-order="4">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?q=80&w=900&auto=format&fit=crop" alt="Sajek Sky Cottage" loading="lazy">
+          <span class="package-card__badge">Sajek</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.4</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Sajek Sky Cottage</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Ruilui Para, Sajek</div>
+          <div class="hc-stars" role="img" aria-label="3 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-cloud"></i> Cloud view</span><span><i class="bi bi-fire"></i> Bonfire</span><span><i class="bi bi-cup-hot"></i> Breakfast</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;5,500<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="sajek-sky">Details</button>
+              <a href="hotel-booking.html?hotel=sajek-sky" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Wooden cottages above the clouds in Sajek Valley.</p>
+            <ul class="d-amenities">
+              <li>Cloud view</li>
+              <li>Bonfire evenings</li>
+              <li>Breakfast</li>
+              <li>Restaurant</li>
+              <li>Generator backup</li>
+              <li>Guide on request</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Cottage</li>
+              <li>Deluxe cottage</li>
+              <li>Family cottage</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="coral-island" data-category="saint-martin" data-stars="4" data-rating="4.3" data-price="8900" data-order="5">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=900&auto=format&fit=crop" alt="Coral Island Resort" loading="lazy">
+          <span class="package-card__badge">Saint Martin</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.3</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Coral Island Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Jetty Road, Saint Martin</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-sun"></i> Beach access</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-snow"></i> AC rooms</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;8,900<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="coral-island">Details</button>
+              <a href="hotel-booking.html?hotel=coral-island" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Beachside rooms a short walk from the jetty.</p>
+            <ul class="d-amenities">
+              <li>Beach access</li>
+              <li>Breakfast</li>
+              <li>AC rooms</li>
+              <li>Restaurant</li>
+              <li>Free WiFi</li>
+              <li>Boat tours</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Standard</li>
+              <li>Deluxe sea view</li>
+              <li>Family suite</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="gulshan-grand" data-category="dhaka" data-stars="5" data-rating="4.8" data-price="11000" data-order="6">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=900&auto=format&fit=crop" alt="Gulshan Grand Hotel" loading="lazy">
+          <span class="package-card__badge">Dhaka</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.8</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Gulshan Grand Hotel</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Gulshan 2, Dhaka</div>
+          <div class="hc-stars" role="img" aria-label="5 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-droplet-half"></i> Pool</span><span><i class="bi bi-heart-pulse"></i> Gym</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;11,000<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="gulshan-grand">Details</button>
+              <a href="hotel-booking.html?hotel=gulshan-grand" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Business-friendly hotel in Gulshan with a pool and gym.</p>
+            <ul class="d-amenities">
+              <li>Pool</li>
+              <li>Gym</li>
+              <li>Breakfast</li>
+              <li>Free WiFi</li>
+              <li>Restaurant</li>
+              <li>Airport pickup</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Deluxe</li>
+              <li>Executive</li>
+              <li>Grand suite</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="port-city" data-category="chattogram" data-stars="4" data-rating="4.4" data-price="7200" data-order="7">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=900&auto=format&fit=crop" alt="Port City Hotel" loading="lazy">
+          <span class="package-card__badge">Chattogram</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.4</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Port City Hotel</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> GEC Circle, Chattogram</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-snow"></i> AC rooms</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;7,200<small>per night</small></span>
+            <div class="package-card__actions"><button type="button" class="btn-ghost" data-view="port-city">Details</button>
+              <a href="hotel-booking.html?hotel=port-city" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+          <div class="package-detail" hidden>
+            <p class="d-overview">Central stay near GEC Circle, close to the port and shopping.</p>
+            <ul class="d-amenities">
+              <li>AC rooms</li>
+              <li>Breakfast</li>
+              <li>Free WiFi</li>
+              <li>Restaurant</li>
+              <li>Parking</li>
+              <li>Gym</li>
+            </ul>
+            <ul class="d-rooms">
+              <li>Standard</li>
+              <li>Deluxe</li>
+              <li>Executive suite</li>
+            </ul>
+            <ul class="d-policy">
+              <li>Check-in 2 PM, check-out 12 PM</li>
+              <li>Free cancellation up to 48 hours</li>
+              <li>Bring NID or passport to check in</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="no-results" id="noResults">
+      <i class="bi bi-building"></i>
+      <strong>No hotels match that yet.</strong>
+      <p class="mb-0">Try another destination, or <a href="contact.html" style="color:var(--teal);font-weight:700;">ask us</a> and we'll find one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOTEL DETAIL MODAL ============ -->
+<div class="modal fade pkg-modal" id="hotelModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="htlModalTitle">Hotel</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="htlModalImg" src="" alt="">
+        <p id="htlModalOverview"></p>
+        <h6>Amenities</h6><ul id="htlModalAmenities"></ul>
+        <h6>Room types</h6><ul id="htlModalRooms"></ul>
+        <h6>Good to know</h6><ul id="htlModalPolicy"></ul>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <span class="package-card__price" id="htlModalPrice"></span>
+        <a href="#" class="btn btn-journey" style="width:auto;" id="htlModalBook">Book this hotel</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <a class="brand brand--footer" href="index.html">
+          <span class="brand-mark">S</span>
+          <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+        </a>
+        <p class="footer-note">Private, fully-guided trips.</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4>Explore</h4>
+        <a href="packages.html">Packages</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="visa.html">Visa Processing</a>
+        <a href="booking.html">Book a package</a>
+        <a href="hotel-booking.html">Book a hotel</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4>Company</h4>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-4">
+        <h4>Stay in the loop</h4>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
+        </form>
+        <div class="newsletter-note" id="newsletterNote"></div>
+        <div class="pay-accept" aria-label="Accepted payments"><span>bKash</span><span>Nagad</span><span>Visa</span><span>Mastercard</span><span>Bank</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Solstice Travel Co. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

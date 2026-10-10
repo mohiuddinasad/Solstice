@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 <link href="https://cdn.jsdelivr.net/npm/filepond@4.32.7/dist/filepond.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4.6.12/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -29,19 +29,31 @@
     <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
       <a href="index.html">Home</a>
       <a href="packages.html">Packages</a>
+      <a href="hotels.html">Hotels</a>
       <a href="visa.html" class="is-active-link">Visa Processing</a>
       <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
-      <a href="booking.html" class="btn btn-plan">Book Now</a>
+      <div class="nav-book">
+        <button type="button" class="btn btn-plan nav-book-btn" aria-haspopup="true" aria-expanded="false">Book Now <i class="bi bi-chevron-down"></i></button>
+        <div class="book-menu" role="menu">
+          <a href="booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-compass"></i></span><span><strong>Tour package</strong><small>Guided trips &amp; holidays</small></span></a>
+          <a href="hotel-booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-building"></i></span><span><strong>Hotel</strong><small>Rooms &amp; resorts in Bangladesh</small></span></a>
+        </div>
+      </div>
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="packages.html">Packages</a>
+    <a href="hotels.html">Hotels</a>
     <a href="visa.html" class="is-active-link">Visa Processing</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
-    <a href="booking.html" class="btn btn-plan mt-3">Book Now</a>
+    <div class="mobile-book">
+      <span class="mb-label">Book now</span>
+      <a href="booking.html" class="btn btn-plan"><i class="bi bi-compass"></i> Tour package</a>
+      <a href="hotel-booking.html" class="btn btn-outline-journey"><i class="bi bi-building"></i> Hotel</a>
+    </div>
   </div>
 </header>
 
@@ -66,7 +78,6 @@
     </div>
   </div>
 </section>
-
 
 
 <!-- ============ DOCUMENT CHECKLIST ============ -->
@@ -174,8 +185,10 @@
       <div class="col-6 col-lg-2">
         <h4>Explore</h4>
         <a href="packages.html">Packages</a>
+        <a href="hotels.html">Hotels</a>
         <a href="visa.html">Visa Processing</a>
-        <a href="booking.html">Book a trip</a>
+        <a href="booking.html">Book a package</a>
+        <a href="hotel-booking.html">Book a hotel</a>
       </div>
       <div class="col-6 col-lg-2">
         <h4>Company</h4>
@@ -189,6 +202,7 @@
           <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
         </form>
         <div class="newsletter-note" id="newsletterNote"></div>
+        <div class="pay-accept" aria-label="Accepted payments"><span>bKash</span><span>Nagad</span><span>Visa</span><span>Mastercard</span><span>Bank</span></div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -207,6 +221,6 @@
 <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-file-validate-size@2.2.8/dist/filepond-plugin-file-validate-size.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-image-preview@4.6.12/dist/filepond-plugin-image-preview.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/filepond@4.32.7/dist/filepond.min.js"></script>
-<script src="assets/script.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>

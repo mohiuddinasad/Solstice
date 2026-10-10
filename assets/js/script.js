@@ -6,6 +6,13 @@ $(function () {
   const $win = $(window);
   const money = function (n) { return '$' + Number(n).toLocaleString('en-US'); };
   const esc = function (s) { return $('<div>').text(s == null ? '' : s).html(); };
+  const bdt = function (n) { return '\u09F3' + Number(n).toLocaleString('en-IN'); };
+  const pad2 = function (n) { return String(n).padStart(2, '0'); };
+  const localISO = function (d) { return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); };
+  const addDays = function (iso, n) { const d = new Date(iso + 'T00:00:00'); d.setDate(d.getDate() + n); return localISO(d); };
+  const prettyDate = function (iso) {
+    return iso ? new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '\u2014';
+  };
 
   /* Marks a .field / .upload-field valid or invalid. Returns true when valid. */
   function check($el, ok) {
@@ -27,7 +34,8 @@ $(function () {
   const $header = $('#siteHeader');
   const $bar = $('<div class="scroll-progress" aria-hidden="true"></div>').appendTo('body');
   $('<a class="fab fab-wa" href="https://wa.me/8801000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>').appendTo('body');
- 
+  const $top = $('<button type="button" class="fab fab-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>').appendTo('body');
+
   /* broken image -> soft gradient placeholder instead of a broken icon */
   const fallbackImg = 'data:image/svg+xml;utf8,' + encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 3" preserveAspectRatio="none"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F5C5C"/><stop offset="1" stop-color="#10243B"/></linearGradient></defs><rect width="4" height="3" fill="url(#g)"/></svg>');
@@ -36,7 +44,20 @@ $(function () {
     if (t && t.tagName === 'IMG' && t.src !== fallbackImg) { t.onerror = null; t.src = fallbackImg; }
   }, true);
 
-  
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    const st = $win.scrollTop();
+    const max = $(document).height() - $win.height();
+    $bar.css('transform', 'scaleX(' + (max > 0 ? Math.min(st / max, 1) : 0) + ')');
+    $header.toggleClass('is-scrolled', st > 10);
+    $top.toggleClass('is-visible', st > 500);
+  }
+  $win.on('scroll resize', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  });
+  onScroll();
+  $top.on('click', function () { scrollToY(0, 600); });
 
   /* mobile menu */
   const $navToggle = $('#navToggle');
@@ -50,6 +71,25 @@ $(function () {
     $mobileMenu.removeClass('is-open');
     $navToggle.removeClass('is-open').attr('aria-expanded', 'false');
   });
+  /* Book Now dropdown: tour package / hotel (hover on desktop, click everywhere) */
+  const $nb = $('.nav-book');
+  if ($nb.length) {
+    const $nbBtn = $nb.find('.nav-book-btn');
+    let nbTimer = null;
+    const setNb = function (open) {
+      clearTimeout(nbTimer);
+      $nb.toggleClass('is-open', open);
+      $nbBtn.attr('aria-expanded', String(open));
+    };
+    $nbBtn.on('click', function (e) { e.stopPropagation(); setNb(!$nb.hasClass('is-open')); });
+    if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+      $nb.on('mouseenter', function () { setNb(true); });
+      $nb.on('mouseleave', function () { nbTimer = setTimeout(function () { setNb(false); }, 160); });
+    }
+    $(document).on('click', function (e) { if (!$(e.target).closest('.nav-book').length) setNb(false); });
+    $(document).on('keydown', function (e) { if (e.key === 'Escape') { setNb(false); } });
+  }
+
   $win.on('resize', function () {
     if ($win.width() >= 992) { $mobileMenu.removeClass('is-open'); $navToggle.removeClass('is-open'); }
   });
@@ -223,11 +263,11 @@ $(function () {
     const $grid = cfg.$grid;
     if (!$grid.length) return null;
 
-    const $cards = $grid.children('.package-card');
+    let $cards = $grid.children('.package-card');
     $cards.each(function () {
       const $c = $(this);
       $c.attr('data-search', [$c.find('h3').text(), $c.find('.package-card__badge').text(),
-        $c.find('.section-note').first().text(), $c.find('.d-overview').text()].join(' ').toLowerCase());
+        $c.find('.section-note').first().text(), $c.find('.d-overview').text(), $c.find('.hc-loc').text()].join(' ').toLowerCase());
     });
     let filter = 'all', term = '', timer = null;
 
@@ -236,12 +276,13 @@ $(function () {
         const $c = $(this);
         const okCat = filter === 'all' || $c.data('category') === filter;
         const okTerm = !term || String($c.data('search')).indexOf(term) > -1;
-        return okCat && okTerm;
+        const okExtra = !cfg.extra || cfg.extra($c);
+        return okCat && okTerm && okExtra;
       });
     }
     function target() { const $m = matches(); return cfg.limit ? $m.slice(0, cfg.limit) : $m; }
     function updateMeta(n) {
-      if (cfg.$count && cfg.$count.length) cfg.$count.text(n === 1 ? 'Showing 1 trip' : 'Showing ' + n + ' trips');
+      if (cfg.$count && cfg.$count.length) cfg.$count.text('Showing ' + n + ' ' + (cfg.noun || 'trip') + (n === 1 ? '' : 's'));
       if (cfg.$empty && cfg.$empty.length) cfg.$empty.toggleClass('is-visible', n === 0);
     }
     function render() {
@@ -289,6 +330,23 @@ $(function () {
       if (q) { term = q.trim().toLowerCase(); cfg.$search.val(q); }
     }
 
+    /* sort (hotels): reorder the real DOM nodes, then re-run the animated render */
+    if (cfg.$sort && cfg.$sort.length) {
+      cfg.$sort.on('change', function () {
+        const mode = $(this).val();
+        const num = function (el, k) { return Number($(el).data(k)) || 0; };
+        const arr = $cards.toArray().sort(function (a, b) {
+          if (mode === 'price-asc') return num(a, 'price') - num(b, 'price');
+          if (mode === 'price-desc') return num(b, 'price') - num(a, 'price');
+          if (mode === 'rating') return num(b, 'rating') - num(a, 'rating');
+          return num(a, 'order') - num(b, 'order');
+        });
+        $grid.append(arr);
+        $cards = $grid.children('.package-card');
+        render();
+      });
+    }
+
     /* first paint: hold cards back until the grid scrolls into view, then animate them in */
     $cards.addClass('is-hidden');
     target().removeClass('is-hidden');
@@ -302,7 +360,7 @@ $(function () {
       io.observe($grid[0]);
     } else { reveal(); }
 
-    return true;
+    return { render: render };
   }
 
   /* packages page */
@@ -335,6 +393,122 @@ $(function () {
 
   /* home page: popular packages, tab-driven */
   initBrowser({ $grid: $('#homePackageGrid'), $bar: $('#homeTabs'), limit: 3 });
+
+  /* home: popular hotels, tab-driven */
+  initBrowser({ $grid: $('#homeHotelGrid'), $bar: $('#homeHotelTabs'), limit: 3 });
+
+  /* home hero: Trips / Hotels switch */
+  (function () {
+    const $tabs = $('.finder-tab');
+    if (!$tabs.length) return;
+    $('#hfIn').attr('min', localISO(new Date()));
+    $('#hfOut').attr('min', addDays(localISO(new Date()), 1));
+
+    $tabs.on('click', function () {
+      if ($(this).hasClass('is-active')) return;
+      const target = $(this).data('target');
+      $tabs.removeClass('is-active').attr('aria-selected', 'false');
+      $(this).addClass('is-active').attr('aria-selected', 'true');
+      $('.finder').attr('hidden', true).removeClass('is-shown');
+      $('.finder[data-pane="' + target + '"]').removeAttr('hidden').addClass('is-shown');
+    });
+    $('#hfIn').on('change', function () {
+      if (!this.value) return;
+      const min = addDays(this.value, 1);
+      $('#hfOut').attr('min', min);
+      if (!$('#hfOut').val() || $('#hfOut').val() < min) $('#hfOut').val(min);
+    });
+    $('#hotelFinderForm').on('submit', function (e) {
+      e.preventDefault();
+      const city = $('#hfCity').val(), i = $('#hfIn').val(), o = $('#hfOut').val();
+      const $fb = $('#hotelFinderFeedback');
+      if (i && o && o <= i) { $fb.removeClass('is-ok').text('Check-out must be after check-in.'); return; }
+      const q = [];
+      if (city && city !== 'all') q.push('city=' + city);
+      if (i) q.push('checkin=' + i);
+      if (o) q.push('checkout=' + o);
+      $fb.addClass('is-ok').text('Finding hotels\u2026');
+      setTimeout(function () { window.location.href = 'hotels.html' + (q.length ? '?' + q.join('&') : ''); }, 400);
+    });
+  })();
+
+  /* hotels page */
+  let hotelModal = null;
+  function openHotelModal(id) {
+    const $c = $('#hotelGrid .hotel-card[data-id="' + id + '"]');
+    const el = document.getElementById('hotelModal');
+    if (!$c.length || !el || !window.bootstrap) return;
+    const name = $c.find('h3').text();
+    $('#htlModalTitle').text(name);
+    $('#htlModalImg').attr('src', $c.find('.package-card__img img').attr('src')).attr('alt', name);
+    $('#htlModalOverview').text($c.find('.d-overview').text());
+    $('#htlModalPrice').html(bdt($c.data('price')) + ' <small>per night</small>');
+    $('#htlModalBook').attr('href', $c.find('.btn-sm-solid').attr('href'));
+    $('#htlModalAmenities').html($c.find('.d-amenities').html());
+    $('#htlModalRooms').html($c.find('.d-rooms').html());
+    $('#htlModalPolicy').html($c.find('.d-policy').html());
+    hotelModal = hotelModal || new bootstrap.Modal(el);
+    hotelModal.show();
+  }
+
+  if ($('#hotelGrid').length) {
+    const $city = $('#stayCity'), $in = $('#stayIn'), $out = $('#stayOut'), $guests = $('#stayGuests');
+    const api = initBrowser({
+      $grid: $('#hotelGrid'), $bar: $('#hotelTabs'), $search: $('#hotelSearch'),
+      $count: $('#resultCount'), $empty: $('#noResults'), $sort: $('#hotelSort'), noun: 'hotel',
+      extra: function ($c) { return Number($c.data('stars')) >= (parseInt($('#hotelStars').val(), 10) || 0); }
+    });
+    $('#hotelStars').on('change', function () { api.render(); });
+
+    /* destination select <-> tabs */
+    $('#hotelTabs').on('click', '.filter-btn', function () { $city.val(String($(this).data('filter'))); });
+    $city.on('change', function () { $('#hotelTabs .filter-btn[data-filter="' + $(this).val() + '"]').trigger('click'); });
+
+    /* dates + guests are carried into the booking link */
+    $in.attr('min', localISO(new Date()));
+    $out.attr('min', addDays(localISO(new Date()), 1));
+    function stayQuery() {
+      const p = [];
+      if ($in.val()) p.push('checkin=' + $in.val());
+      if ($out.val()) p.push('checkout=' + $out.val());
+      if ($guests.val()) p.push('guests=' + $guests.val());
+      return p.length ? '&' + p.join('&') : '';
+    }
+    function updateBookLinks() {
+      const q = stayQuery();
+      $('#hotelGrid .hotel-card').each(function () {
+        $(this).find('.btn-sm-solid').attr('href', 'hotel-booking.html?hotel=' + $(this).data('id') + q);
+      });
+    }
+    $in.on('change', function () {
+      if (!this.value) return;
+      const min = addDays(this.value, 1);
+      $out.attr('min', min);
+      if (!$out.val() || $out.val() < min) $out.val(min);
+      updateBookLinks();
+    });
+    $out.add($guests).on('change', updateBookLinks);
+
+    $('#staySearch').on('submit', function (e) {
+      e.preventDefault();
+      const $fb = $('#stayFeedback');
+      if ($in.val() && $out.val() && $out.val() <= $in.val()) { $fb.text('Check-out must be after check-in.'); return; }
+      $fb.text('');
+      updateBookLinks();
+      scrollToY($('#hotelTabs').offset().top - 150, 450);
+    });
+
+    $('#hotelGrid').on('click', '[data-view]', function () { openHotelModal($(this).data('view')); });
+
+    /* URL params: ?city= &checkin= &checkout= &guests= &view= */
+    const qs = new URLSearchParams(window.location.search);
+    if (qs.get('checkin')) $in.val(qs.get('checkin')).trigger('change');
+    if (qs.get('checkout')) $out.val(qs.get('checkout'));
+    if (qs.get('guests')) $guests.val(qs.get('guests'));
+    updateBookLinks();
+    if (qs.get('city')) $('#hotelTabs .filter-btn[data-filter="' + qs.get('city') + '"]').trigger('click');
+    if (qs.get('view')) setTimeout(function () { openHotelModal(qs.get('view')); }, 400);
+  }
 
   /* =========================================================
      FAQ accordion
@@ -468,7 +642,7 @@ $(function () {
       return { id: id, name: $o.data('name'), price: Number($o.data('price')), image: $o.data('image'),
                duration: $o.data('duration'), categoryLabel: $o.data('category') };
     }
-    $date.attr('min', new Date(Date.now() + 864e5).toISOString().slice(0, 10));
+    $date.attr('min', addDays(localISO(new Date()), 1));
 
     const preset = new URLSearchParams(window.location.search).get('package');
     if (preset && findPkg(preset)) $pkg.val(preset);
@@ -487,7 +661,7 @@ $(function () {
       );
     }
     function travelerHtml() {
-      const today = new Date().toISOString().slice(0, 10);
+      const today = localISO(new Date());
       return (
         '<div class="traveler-block card-panel">' +
           '<div class="traveler-head"><span class="t-num">1</span><h3 class="t-title">Traveler</h3>' +
@@ -662,6 +836,191 @@ $(function () {
     });
 
     setTravelers(parseInt($trav.val(), 10) || 2);
+    updateSummary();
+  }
+
+  /* =========================================================
+     Hotel booking wizard
+  ========================================================= */
+  const $hb = $('#hotelBookingForm');
+  if ($hb.length) {
+    // Confirm these rates with the client / each hotel before launch
+    const VAT = 0.15, SERVICE = 0.10, ADVANCE = 0.30;
+    const $hotel = $('#hbHotel'), $in = $('#hbIn'), $out = $('#hbOut'), $rooms = $('#hbRooms'), $guests = $('#hbGuests');
+    document.body.classList.add('has-mobile-total');
+
+    /* hotel data comes from the <option data-*> attributes in hotel-booking.html */
+    function findHotel(id) {
+      const $o = id ? $hotel.find('option[value="' + id + '"]') : $();
+      if (!$o.length) return null;
+      return { id: id, name: $o.data('name'), city: $o.data('city'), area: $o.data('area'), price: Number($o.data('price')),
+               stars: Number($o.data('stars')), image: $o.data('image') };
+    }
+    function nights() {
+      if (!$in.val() || !$out.val()) return 0;
+      const a = new Date($in.val() + 'T00:00:00'), b = new Date($out.val() + 'T00:00:00');
+      return Math.max(0, Math.round((b - a) / 864e5));
+    }
+    const clamp = function (v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
+
+    $in.attr('min', localISO(new Date()));
+    $out.attr('min', addDays(localISO(new Date()), 1));
+    $in.on('change', function () {
+      if (!this.value) return;
+      const min = addDays(this.value, 1);
+      $out.attr('min', min);
+      if (!$out.val() || $out.val() < min) $out.val(min);
+      updateSummary();
+    });
+
+    function setCounts(r, g) {
+      $rooms.val(r); $guests.val(g);
+      $('#hbRoomsLabel').text(r); $('#hbGuestsLabel').text(g);
+    }
+    $('[data-hstep]').on('click', function () {
+      const parts = String($(this).data('hstep')).split(':');
+      let r = parseInt($rooms.val(), 10) || 1, g = parseInt($guests.val(), 10) || 1;
+      if (parts[0] === 'rooms') { r = clamp(r + parseInt(parts[1], 10), 1, 5); if (g < r) g = r; }
+      else { g = clamp(g + parseInt(parts[1], 10), 1, 12); if (r > g) r = g; }
+      setCounts(r, g);
+      updateSummary();
+    });
+
+    /* ---- summary sidebar + mobile bar ---- */
+    function updateSummary() {
+      const h = findHotel($hotel.val());
+      const n = nights();
+      const r = parseInt($rooms.val(), 10) || 1, g = parseInt($guests.val(), 10) || 1;
+      const $t = $('input[name="rtype"]:checked');
+      const rate = h ? h.price + (parseInt($t.data('extra'), 10) || 0) : 0;
+      const sub = rate * n * r;
+      const svc = Math.round(sub * SERVICE);
+      const vat = Math.round((sub + svc) * VAT);
+      const total = sub + svc + vat;
+
+      $('#hsHotel').text(h ? h.name : '\u2014');
+      $('#hsIn').text(prettyDate($in.val()));
+      $('#hsOut').text(prettyDate($out.val()));
+      $('#hsNights').text(n || '\u2014');
+      $('#hsRG').text(r + ' room' + (r > 1 ? 's' : '') + ' \u00b7 ' + g + ' guest' + (g > 1 ? 's' : ''));
+      $('#hsType').text($t.val() || '\u2014');
+      $('#hsSub').text(bdt(sub));
+      $('#hsSvc').text(bdt(svc));
+      $('#hsVat').text(bdt(vat));
+      $('#hsTotal').text(bdt(total));
+      $('#hsAdv').text(bdt(Math.round(total * ADVANCE)));
+      $('#mobileTotalValue').text(bdt(total));
+      $('#hbNights').prop('hidden', !n).text(n + ' night' + (n === 1 ? '' : 's') + ' \u00b7 ' + bdt(rate) + ' per room per night');
+
+      $('#hsThumb').toggleClass('is-visible', !!h);
+      if (h) $('#hsThumb').attr('src', h.image).attr('alt', h.name);
+
+      const $pv = $('#hbPreview');
+      if (h) {
+        $('#hbPrevImg').attr('src', h.image).attr('alt', h.name);
+        $('#hbPrevName').text(h.name);
+        $('#hbPrevMeta').text(h.area + ', ' + h.city + ' \u00b7 ' + h.stars + ' star \u00b7 ' + bdt(h.price) + ' per night');
+        if (!$pv.hasClass('is-visible') || $pv.data('id') !== h.id) {
+          $pv.data('id', h.id).removeClass('is-visible');
+          void $pv[0].offsetWidth;
+          $pv.addClass('is-visible');
+        }
+      } else { $pv.removeClass('is-visible'); }
+    }
+    $hb.on('change input', '#hbHotel, #hbIn, #hbOut, input[name="rtype"]', updateSummary);
+
+    /* ---- steps ---- */
+    function goTo(n) {
+      $('.wizard-panel').removeClass('is-active').filter('[data-panel="' + n + '"]').addClass('is-active');
+      if (n === 'success') {
+        $('.wizard-step-indicator').removeClass('is-active').addClass('is-done');
+        $('#wizardProgress').css('--p', 1);
+        $('#mobileTotal').hide();
+        document.body.classList.remove('has-mobile-total');
+      } else {
+        $('#wizardProgress').css('--p', (n - 1) / 2);
+        $('.wizard-step-indicator').each(function () {
+          const st = parseInt($(this).data('step'), 10);
+          $(this).removeClass('is-active is-done');
+          if (st < n) $(this).addClass('is-done');
+          if (st === n) $(this).addClass('is-active');
+        });
+        $('#mobileStepLabel').text('Step ' + n + ' of 3');
+      }
+      scrollToY($('#wizardProgress').offset().top - 110, 400);
+    }
+    function focusFirstInvalid() {
+      const $f = $('.wizard-panel.is-active .field.is-invalid').first();
+      if (!$f.length) return;
+      scrollToY($f.offset().top - 150, 300);
+      const fld = $f.find('input, select, textarea').first()[0];
+      if (fld) fld.focus({ preventScroll: true });
+    }
+    function validateStep1() {
+      let ok = true;
+      ok = check($hotel, !!$hotel.val()) && ok;
+      ok = check($in, !!$in.val()) && ok;
+      ok = check($out, !!$out.val() && $out.val() > $in.val()) && ok;
+      if (!ok) focusFirstInvalid();
+      return ok;
+    }
+    function validateStep2() {
+      const $n = $('#hbName'), $p = $('#hbPhone'), $e = $('#hbEmail');
+      let ok = true;
+      ok = check($n, $n.val().trim().length > 1) && ok;
+      ok = check($p, $p.val().replace(/\D/g, '').length >= 7) && ok;
+      ok = check($e, emailPattern.test($e.val().trim())) && ok;
+      if (!ok) focusFirstInvalid();
+      return ok;
+    }
+    function buildReview() {
+      const h = findHotel($hotel.val());
+      const n = nights();
+      $('#reviewOutput').html(
+        '<div class="review-block"><h4>Stay</h4><p><strong>' + esc(h ? h.name : '\u2014') + '</strong> \u00b7 ' + esc(h ? h.city : '') + '</p>' +
+        '<p>' + esc(prettyDate($in.val())) + ' \u2192 ' + esc(prettyDate($out.val())) + ' \u00b7 ' + n + ' night' + (n === 1 ? '' : 's') + '</p>' +
+        '<p>' + esc($('#hsRG').text()) + ' \u00b7 ' + esc($('input[name="rtype"]:checked').val()) + '</p>' +
+        '<p>Estimated total: <strong>' + esc($('#hsTotal').text()) + '</strong></p></div>' +
+        '<div class="review-block"><h4>Lead guest</h4><p>' + esc($('#hbName').val()) + '</p><p>' + esc($('#hbPhone').val()) + ' \u00b7 ' + esc($('#hbEmail').val()) +
+        '</p><p>Arriving: ' + esc($('#hbArrival').val()) + '</p></div>'
+      );
+    }
+
+    $hb.find('[data-next]').on('click', function () {
+      const next = parseInt($(this).data('next'), 10);
+      if (next === 2 && !validateStep1()) return;
+      if (next === 3) { if (!validateStep2()) return; buildReview(); }
+      goTo(next);
+    });
+    $hb.find('[data-prev]').on('click', function () { goTo(parseInt($(this).data('prev'), 10)); });
+
+    $hb.on('submit', function (e) {
+      e.preventDefault();
+      const accepted = $('#hbTerms').is(':checked');
+      $('#hbTermsError').toggle(!accepted);
+      if (!accepted) return;
+
+      // Payload a real backend would receive
+      const payload = {
+        hotel: $hotel.val(), checkIn: $in.val(), checkOut: $out.val(), rooms: $rooms.val(), guests: $guests.val(),
+        roomType: $('input[name="rtype"]:checked').val(), payment: $('input[name="hpay"]:checked').val(),
+        guest: { name: $('#hbName').val(), phone: $('#hbPhone').val(), email: $('#hbEmail').val(), id: $('#hbId').val(), arrival: $('#hbArrival').val() },
+        notes: $('#hbNotes').val()
+      };
+      // TODO: fetch('/api/hotel-bookings', { method: 'POST', body: JSON.stringify(payload) })
+      void payload;
+
+      $('#hbRef').text('HTL-' + Math.floor(100000 + Math.random() * 900000));
+      goTo('success');
+    });
+
+    /* presets from the hotels page: ?hotel= &checkin= &checkout= &guests= */
+    const qs = new URLSearchParams(window.location.search);
+    if (qs.get('hotel') && findHotel(qs.get('hotel'))) $hotel.val(qs.get('hotel'));
+    if (qs.get('checkin')) $in.val(qs.get('checkin')).trigger('change');
+    if (qs.get('checkout')) $out.val(qs.get('checkout'));
+    const g0 = parseInt(qs.get('guests'), 10);
+    if (g0) setCounts(1, clamp(g0, 1, 12));
     updateSummary();
   }
 

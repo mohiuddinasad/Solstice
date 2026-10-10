@@ -1,497 +1,644 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solstice Travel Co. — Journeys Worth Telling</title>
-  <meta name="description"
-    content="Solstice Travel Co. designs private, fully-guided journeys to the world's most remarkable places.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solstice Travel Co. — Journeys Worth Telling</title>
+<meta name="description" content="Solstice Travel Co. designs private, fully-guided journeys to the world's most remarkable places.">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
-    rel="stylesheet">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Custom -->
-  <link rel="stylesheet" href="assets/style.css">
+<!-- Custom -->
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
 
-  <!-- ============ NAVBAR ============ -->
-  <header class="site-header" id="siteHeader">
-    <nav class="navbar navbar-expand-lg container-fluid px-4 px-lg-5 py-3">
-      <a class="brand" href="#top">
-        <span class="brand-mark">S</span>
-        <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
-      </a>
+<!-- ============ NAVBAR ============ -->
+<header class="site-header" id="siteHeader">
+  <nav class="navbar navbar-expand-lg container-fluid px-4 px-lg-5 py-3">
+    <a class="brand" href="#top">
+      <span class="brand-mark">S</span>
+      <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
+    </a>
 
-      <button class="nav-toggle d-lg-none" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <button class="nav-toggle d-lg-none" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
 
-      <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
-        <a href="index.html" class="is-active-link">Home</a>
-        <a href="packages.html">Packages</a>
-        <a href="visa.html">Visa Processing</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact</a>
-        <a href="booking.html" class="btn btn-plan">Book Now</a>
-      </div>
-    </nav>
-
-    <!-- mobile menu panel -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
       <a href="index.html" class="is-active-link">Home</a>
       <a href="packages.html">Packages</a>
+      <a href="hotels.html">Hotels</a>
       <a href="visa.html">Visa Processing</a>
       <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
-      <a href="booking.html" class="btn btn-plan mt-3">Book Now</a>
-    </div>
-  </header>
-
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="top">
-    <div class="container-fluid px-4 px-lg-5">
-      <div class="row align-items-center gy-5">
-        <div class="col-lg-7 hero-copy">
-          <p class="eyebrow-plain">Private journeys, planned by hand</p>
-          <h1>Go somewhere that changes how you <span class="ital">see</span> things.</h1>
-          <p class="hero-sub">Fully-guided trips, planned by people who've been there.</p>
-
-          <form class="finder card-panel" id="finderForm" novalidate>
-            <div class="finder-row">
-              <div class="finder-field">
-                <label for="destInput">Where to</label>
-                <input type="text" id="destInput" placeholder="A place, or a feeling" required>
-              </div>
-              <div class="finder-field">
-                <label for="whenInput">When</label>
-                <input type="text" id="whenInput" placeholder="Month, or flexible">
-              </div>
-              <div class="finder-field">
-                <label for="travelersInput">Travelers</label>
-                <select id="travelersInput">
-                  <option>Just me</option>
-                  <option selected>Two</option>
-                  <option>Family</option>
-                  <option>Group of friends</option>
-                </select>
-              </div>
-            </div>
-            <div class="finder-feedback" id="finderFeedback" aria-live="polite"></div>
-            <button type="submit" class="btn btn-finder">Start planning</button>
-          </form>
-          <p class="section-note mt-3" style="font-size:.88rem;">Or browse <a href="packages.html"
-              style="color:var(--teal); font-weight:700;">ready-made packages</a>.</p>
+      <div class="nav-book">
+        <button type="button" class="btn btn-plan nav-book-btn" aria-haspopup="true" aria-expanded="false">Book Now <i class="bi bi-chevron-down"></i></button>
+        <div class="book-menu" role="menu">
+          <a href="booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-compass"></i></span><span><strong>Tour package</strong><small>Guided trips &amp; holidays</small></span></a>
+          <a href="hotel-booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-building"></i></span><span><strong>Hotel</strong><small>Rooms &amp; resorts in Bangladesh</small></span></a>
         </div>
+      </div>
+    </div>
+  </nav>
 
-        <div class="col-lg-5">
-          <div class="hero-collage">
-            <img class="collage-img collage-a"
-              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000&auto=format&fit=crop"
-              alt="Coastal cliffs and turquoise water">
-            <img class="collage-img collage-b"
-              src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop"
-              alt="Traveler looking over a mountain valley">
-            <div class="collage-note">
-              <span class="collage-note-num">14</span>
-              <span>years planning trips</span>
+  <!-- mobile menu panel -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="is-active-link">Home</a>
+    <a href="packages.html">Packages</a>
+    <a href="hotels.html">Hotels</a>
+    <a href="visa.html">Visa Processing</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-book">
+      <span class="mb-label">Book now</span>
+      <a href="booking.html" class="btn btn-plan"><i class="bi bi-compass"></i> Tour package</a>
+      <a href="hotel-booking.html" class="btn btn-outline-journey"><i class="bi bi-building"></i> Hotel</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7 hero-copy">
+        <p class="eyebrow-plain">Private journeys, planned by hand</p>
+        <h1>Go somewhere that changes how you <span class="ital">see</span> things.</h1>
+        <p class="hero-sub">Fully-guided trips, planned by people who've been there.</p>
+
+        <div class="finder-wrap">
+          <div class="finder-tabs" role="tablist" aria-label="Search type">
+            <button type="button" class="finder-tab is-active" data-target="trips" role="tab"><i class="bi bi-compass"></i> Trips</button>
+            <button type="button" class="finder-tab" data-target="hotels" role="tab"><i class="bi bi-building"></i> Hotels</button>
+          </div>
+          <form class="finder card-panel" id="finderForm" data-pane="trips" novalidate>
+          <div class="finder-row">
+            <div class="finder-field">
+              <label for="destInput">Where to</label>
+              <input type="text" id="destInput" placeholder="A place, or a feeling" required>
             </div>
+            <div class="finder-field">
+              <label for="whenInput">When</label>
+              <input type="text" id="whenInput" placeholder="Month, or flexible">
+            </div>
+            <div class="finder-field">
+              <label for="travelersInput">Travelers</label>
+              <select id="travelersInput">
+                <option>Just me</option>
+                <option selected>Two</option>
+                <option>Family</option>
+                <option>Group of friends</option>
+              </select>
+            </div>
+          </div>
+          <div class="finder-feedback" id="finderFeedback" aria-live="polite"></div>
+          <button type="submit" class="btn btn-finder">Start planning</button>
+        </form>
+          <form class="finder card-panel" id="hotelFinderForm" data-pane="hotels" novalidate hidden>
+          <div class="finder-row">
+            <div class="finder-field">
+              <label for="hfCity">Destination</label>
+              <select id="hfCity"><option value="all">Anywhere in Bangladesh</option><option value="coxs-bazar">Cox&#x27;s Bazar</option><option value="sylhet">Sylhet</option><option value="bandarban">Bandarban</option><option value="sajek">Sajek</option><option value="saint-martin">Saint Martin</option><option value="dhaka">Dhaka</option><option value="chattogram">Chattogram</option></select>
+            </div>
+            <div class="finder-field">
+              <label for="hfIn">Check-in</label>
+              <input type="date" id="hfIn">
+            </div>
+            <div class="finder-field">
+              <label for="hfOut">Check-out</label>
+              <input type="date" id="hfOut">
+            </div>
+          </div>
+          <div class="finder-feedback" id="hotelFinderFeedback" aria-live="polite"></div>
+          <button type="submit" class="btn btn-finder">Find hotels</button>
+        </form>
+        </div>
+        <p class="section-note mt-3" style="font-size:.88rem;">Or browse <a href="packages.html" style="color:var(--teal); font-weight:700;">ready-made packages</a>.</p>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="hero-collage">
+          <img class="collage-img collage-a" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000&auto=format&fit=crop" alt="Coastal cliffs and turquoise water">
+          <img class="collage-img collage-b" src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop" alt="Traveler looking over a mountain valley">
+          <div class="collage-note">
+            <span class="collage-note-num">14</span>
+            <span>years planning trips</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ TRUST STRIP ============ -->
-  <section class="trust-strip">
-    <div class="container-fluid px-4 px-lg-5">
-      <div class="row text-center gy-4">
-        <div class="col-6 col-md-3"><span class="stat" data-count="46">0</span>
-          <p>countries</p>
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust-strip">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row text-center gy-4">
+      <div class="col-6 col-md-3"><span class="stat" data-count="46">0</span><p>countries</p></div>
+      <div class="col-6 col-md-3"><span class="stat" data-count="2300">0</span><p>journeys planned</p></div>
+      <div class="col-6 col-md-3"><span class="stat" data-count="14">0</span><p>years</p></div>
+      <div class="col-6 col-md-3"><span class="stat" data-count="98" data-suffix="%">0</span><p>travel with us again</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINATIONS ============ -->
+<section class="destinations" id="destinations">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row">
+      <div class="col-lg-7">
+        <p class="eyebrow-plain">Where people are going</p>
+        <h2>Destinations we know well</h2>
+      </div>
+    </div>
+
+    <div class="dest-grid">
+      <a href="packages.html" class="dest-card dest-card--tall">
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop" alt="Rice terraces in Bali">
+        <div class="dest-info"><h3>Bali</h3><p>Terraces &amp; reef</p><span class="dest-price">from $2,450</span></div>
+      </a>
+      <a href="packages.html" class="dest-card">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop" alt="Whitewashed buildings in Santorini">
+        <div class="dest-info"><h3>Santorini</h3><p>Island-hopping</p><span class="dest-price">from $3,100</span></div>
+      </a>
+      <a href="packages.html" class="dest-card">
+        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop" alt="Temple gate in Kyoto">
+        <div class="dest-info"><h3>Kyoto</h3><p>Old Japan</p><span class="dest-price">from $3,650</span></div>
+      </a>
+      <a href="packages.html" class="dest-card dest-card--wide">
+        <img src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=1000&auto=format&fit=crop" alt="Mountains in Patagonia">
+        <div class="dest-info"><h3>Patagonia</h3><p>Glaciers &amp; granite</p><span class="dest-price">from $4,200</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="experiences" id="why">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5">
+        <div class="why-img">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1000&auto=format&fit=crop" alt="Mountain valley at sunrise">
+          <div class="why-badge"><strong>98%</strong>travel with us again</div>
         </div>
-        <div class="col-6 col-md-3"><span class="stat" data-count="2300">0</span>
-          <p>journeys planned</p>
-        </div>
-        <div class="col-6 col-md-3"><span class="stat" data-count="14">0</span>
-          <p>years</p>
-        </div>
-        <div class="col-6 col-md-3"><span class="stat" data-count="98" data-suffix="%">0</span>
-          <p>travel with us again</p>
+      </div>
+      <div class="col-lg-7">
+        <p class="eyebrow-plain">Why Solstice</p>
+        <h2>Everything a trip needs, in one place</h2>
+        <div class="why-list">
+          <div class="why-item"><i class="bi bi-map"></i><div><h3>Hand-built routes</h3><p>No templates.</p></div></div>
+          <div class="why-item"><i class="bi bi-person-vcard"></i><div><h3>In-house visas</h3><p>Handled with your booking.</p></div></div>
+          <div class="why-item"><i class="bi bi-calendar-check"></i><div><h3>Simple booking</h3><p>Book online in minutes.</p></div></div>
+          <div class="why-item"><i class="bi bi-headset"></i><div><h3>Help on the road</h3><p>A local contact on call.</p></div></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ DESTINATIONS ============ -->
-  <section class="destinations" id="destinations">
-    <div class="container-fluid px-4 px-lg-5">
-      <div class="row">
-        <div class="col-lg-7">
-          <p class="eyebrow-plain">Where people are going</p>
-          <h2>Destinations we know well</h2>
+<!-- ============ POPULAR PACKAGES (tabs) ============ -->
+<section class="popular" id="popular">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row align-items-end gy-2 mb-4">
+      <div class="col-lg-8">
+        <p class="eyebrow-plain">Popular right now</p>
+        <h2 class="mb-0">Pick a trip style</h2>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="packages.html" style="color:var(--teal); font-weight:700;">See all packages &rarr;</a>
+      </div>
+    </div>
+    <div class="filter-scroll mb-4">
+      <div class="filter-bar" id="homeTabs" role="tablist" aria-label="Trip style">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="beach">Beach</button>
+        <button class="filter-btn" data-filter="adventure">Adventure</button>
+        <button class="filter-btn" data-filter="cultural">Cultural</button>
+        <button class="filter-btn" data-filter="honeymoon">Honeymoon</button>
+        <button class="filter-btn" data-filter="family">Family</button>
+      </div>
+    </div>
+    <div class="package-grid" id="homePackageGrid">
+      <!-- Same cards as packages.html; the tabs show the first 3 that match. -->
+      <article class="package-card" data-id="bali-explorer" data-category="beach" data-price="2450" data-duration="7 nights">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop" alt="Bali &amp; the Lesser Sundas" loading="lazy">
+          <span class="package-card__badge">Beach</span>
         </div>
+        <div class="package-card__body">
+          <h3>Bali &amp; the Lesser Sundas</h3>
+          <div class="package-card__meta"><span><i class="bi bi-clock"></i>7 nights</span></div>
+          <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Rice terraces, temples and reef time.</p>
+          <div class="package-card__foot">
+            <span class="package-card__price">$2,450<small>per person</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=bali-explorer">Details</a>
+              <a href="booking.html?package=bali-explorer" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card" data-id="santorini-cyclades" data-category="honeymoon" data-price="3100" data-duration="8 nights">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop" alt="Santorini &amp; the Cyclades" loading="lazy">
+          <span class="package-card__badge">Honeymoon</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Santorini &amp; the Cyclades</h3>
+          <div class="package-card__meta"><span><i class="bi bi-clock"></i>8 nights</span></div>
+          <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Three islands, off cruise-ship hours.</p>
+          <div class="package-card__foot">
+            <span class="package-card__price">$3,100<small>per person</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=santorini-cyclades">Details</a>
+              <a href="booking.html?package=santorini-cyclades" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card" data-id="kyoto-kii" data-category="cultural" data-price="3650" data-duration="9 nights">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop" alt="Kyoto &amp; the Kii Peninsula" loading="lazy">
+          <span class="package-card__badge">Cultural</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Kyoto &amp; the Kii Peninsula</h3>
+          <div class="package-card__meta"><span><i class="bi bi-clock"></i>9 nights</span></div>
+          <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Old Japan, temples before the crowds.</p>
+          <div class="package-card__foot">
+            <span class="package-card__price">$3,650<small>per person</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=kyoto-kii">Details</a>
+              <a href="booking.html?package=kyoto-kii" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card" data-id="patagonia" data-category="adventure" data-price="4200" data-duration="10 nights">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=1000&auto=format&fit=crop" alt="Patagonia" loading="lazy">
+          <span class="package-card__badge">Adventure</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Patagonia</h3>
+          <div class="package-card__meta"><span><i class="bi bi-clock"></i>10 nights</span></div>
+          <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Glaciers, granite towers, real trekking.</p>
+          <div class="package-card__foot">
+            <span class="package-card__price">$4,200<small>per person</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=patagonia">Details</a>
+              <a href="booking.html?package=patagonia" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card" data-id="marrakech-atlas" data-category="cultural" data-price="1980" data-duration="6 nights">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=900&auto=format&fit=crop" alt="Marrakech &amp; the Atlas" loading="lazy">
+          <span class="package-card__badge">Cultural</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Marrakech &amp; the Atlas</h3>
+          <div class="package-card__meta"><span><i class="bi bi-clock"></i>6 nights</span></div>
+          <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Souks, desert camp and Atlas villages.</p>
+          <div class="package-card__foot">
+            <span class="package-card__price">$1,980<small>per person</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=marrakech-atlas">Details</a>
+              <a href="booking.html?package=marrakech-atlas" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card" data-id="swiss-alps" data-category="family" data-price="3850" data-duration="7 nights">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=900&auto=format&fit=crop" alt="Swiss Alps Family Trail" loading="lazy">
+          <span class="package-card__badge">Family</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Swiss Alps Family Trail</h3>
+          <div class="package-card__meta"><span><i class="bi bi-clock"></i>7 nights</span></div>
+          <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Cable cars and lake towns, kid-friendly.</p>
+          <div class="package-card__foot">
+            <span class="package-card__price">$3,850<small>per person</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=swiss-alps">Details</a>
+              <a href="booking.html?package=swiss-alps" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOTELS (tabs) ============ -->
+<section class="hotels-home" id="stay">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row align-items-end gy-2 mb-4">
+      <div class="col-lg-8">
+        <p class="eyebrow-plain">Stay somewhere great</p>
+        <h2 class="mb-0">Popular hotels in Bangladesh</h2>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="hotels.html" style="color:var(--teal); font-weight:700;">See all hotels &rarr;</a>
+      </div>
+    </div>
+    <div class="filter-scroll mb-4">
+      <div class="filter-bar" id="homeHotelTabs" role="tablist" aria-label="Destination">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="coxs-bazar">Cox's Bazar</button>
+        <button class="filter-btn" data-filter="sylhet">Sylhet</button>
+        <button class="filter-btn" data-filter="bandarban">Bandarban</button>
+        <button class="filter-btn" data-filter="dhaka">Dhaka</button>
+      </div>
+    </div>
+    <div class="package-grid" id="homeHotelGrid">
+      <!-- Same cards as hotels.html; the tabs show the first 3 that match. -->
+      <article class="package-card hotel-card" data-id="azure-shore" data-category="coxs-bazar" data-stars="5" data-rating="4.7" data-price="12500" data-order="0">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=900&auto=format&fit=crop" alt="Azure Shore Resort" loading="lazy">
+          <span class="package-card__badge">Cox&#x27;s Bazar</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.7</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Azure Shore Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Kolatoli Beach, Cox&#x27;s Bazar</div>
+          <div class="hc-stars" role="img" aria-label="5 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-water"></i> Sea view</span><span><i class="bi bi-droplet-half"></i> Pool</span><span><i class="bi bi-cup-hot"></i> Breakfast</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;12,500<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=azure-shore">Details</a>
+              <a href="hotel-booking.html?hotel=azure-shore" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="laboni-sands" data-category="coxs-bazar" data-stars="3" data-rating="4.2" data-price="4200" data-order="1">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=900&auto=format&fit=crop" alt="Laboni Sands Hotel" loading="lazy">
+          <span class="package-card__badge">Cox&#x27;s Bazar</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.2</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Laboni Sands Hotel</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Laboni Point, Cox&#x27;s Bazar</div>
+          <div class="hc-stars" role="img" aria-label="3 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-snow"></i> AC rooms</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;4,200<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=laboni-sands">Details</a>
+              <a href="hotel-booking.html?hotel=laboni-sands" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="tea-valley" data-category="sylhet" data-stars="4" data-rating="4.5" data-price="6800" data-order="2">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=900&auto=format&fit=crop" alt="Tea Valley Resort" loading="lazy">
+          <span class="package-card__badge">Sylhet</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.5</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Tea Valley Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Tea Garden Road, Sylhet</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-tree"></i> Tea garden view</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;6,800<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=tea-valley">Details</a>
+              <a href="hotel-booking.html?hotel=tea-valley" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="hill-cloud" data-category="bandarban" data-stars="4" data-rating="4.6" data-price="7500" data-order="3">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=900&auto=format&fit=crop" alt="Hill Cloud Resort" loading="lazy">
+          <span class="package-card__badge">Bandarban</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.6</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Hill Cloud Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Meghla Hills, Bandarban</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-image"></i> Hill view</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-egg-fried"></i> Restaurant</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;7,500<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=hill-cloud">Details</a>
+              <a href="hotel-booking.html?hotel=hill-cloud" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="sajek-sky" data-category="sajek" data-stars="3" data-rating="4.4" data-price="5500" data-order="4">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?q=80&w=900&auto=format&fit=crop" alt="Sajek Sky Cottage" loading="lazy">
+          <span class="package-card__badge">Sajek</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.4</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Sajek Sky Cottage</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Ruilui Para, Sajek</div>
+          <div class="hc-stars" role="img" aria-label="3 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-cloud"></i> Cloud view</span><span><i class="bi bi-fire"></i> Bonfire</span><span><i class="bi bi-cup-hot"></i> Breakfast</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;5,500<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=sajek-sky">Details</a>
+              <a href="hotel-booking.html?hotel=sajek-sky" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="coral-island" data-category="saint-martin" data-stars="4" data-rating="4.3" data-price="8900" data-order="5">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=900&auto=format&fit=crop" alt="Coral Island Resort" loading="lazy">
+          <span class="package-card__badge">Saint Martin</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.3</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Coral Island Resort</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Jetty Road, Saint Martin</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-sun"></i> Beach access</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-snow"></i> AC rooms</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;8,900<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=coral-island">Details</a>
+              <a href="hotel-booking.html?hotel=coral-island" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="gulshan-grand" data-category="dhaka" data-stars="5" data-rating="4.8" data-price="11000" data-order="6">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=900&auto=format&fit=crop" alt="Gulshan Grand Hotel" loading="lazy">
+          <span class="package-card__badge">Dhaka</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.8</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Gulshan Grand Hotel</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> Gulshan 2, Dhaka</div>
+          <div class="hc-stars" role="img" aria-label="5 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-droplet-half"></i> Pool</span><span><i class="bi bi-heart-pulse"></i> Gym</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;11,000<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=gulshan-grand">Details</a>
+              <a href="hotel-booking.html?hotel=gulshan-grand" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="package-card hotel-card" data-id="port-city" data-category="chattogram" data-stars="4" data-rating="4.4" data-price="7200" data-order="7">
+        <div class="package-card__img">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=900&auto=format&fit=crop" alt="Port City Hotel" loading="lazy">
+          <span class="package-card__badge">Chattogram</span>
+          <span class="rating-chip"><i class="bi bi-star-fill"></i> 4.4</span>
+        </div>
+        <div class="package-card__body">
+          <h3>Port City Hotel</h3>
+          <div class="hc-loc"><i class="bi bi-geo-alt"></i> GEC Circle, Chattogram</div>
+          <div class="hc-stars" role="img" aria-label="4 star hotel"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <div class="hc-chips"><span><i class="bi bi-snow"></i> AC rooms</span><span><i class="bi bi-cup-hot"></i> Breakfast</span><span><i class="bi bi-wifi"></i> Free WiFi</span></div>
+          <div class="package-card__foot">
+            <span class="package-card__price">&#2547;7,200<small>per night</small></span>
+            <div class="package-card__actions"><a class="btn-ghost" href="hotels.html?view=port-city">Details</a>
+              <a href="hotel-booking.html?hotel=port-city" class="btn-sm-solid">Book</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ PACKAGES / JOURNEYS ============ -->
+<section class="journeys" id="journeys">
+  <div class="container-fluid px-4 px-lg-5">
+    <p class="eyebrow-plain">Choose your level of help</p>
+    <h2>Three ways to start</h2>
+
+    <div class="journey-cards">
+      <div class="journey-card">
+        <h3>Explorer</h3>
+        <p class="journey-desc">A solid route, you handle the details.</p>
+        <ul>
+          <li>Full itinerary</li>
+          <li>Hand-picked stays</li>
+          <li>Email support</li>
+        </ul>
+        <span class="journey-price">from $1,800 <small>per person</small></span>
+        <a href="booking.html" class="btn btn-outline-journey">Start here</a>
       </div>
 
-      <div class="dest-grid">
-        <a href="packages.html" class="dest-card dest-card--tall">
-          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop"
-            alt="Rice terraces in Bali">
-          <div class="dest-info">
-            <h3>Bali</h3>
-            <p>Terraces &amp; reef</p><span class="dest-price">from $2,450</span>
-          </div>
+      <div class="journey-card journey-card--featured">
+        <span class="journey-tag">Most requested</span>
+        <h3>Voyager</h3>
+        <p class="journey-desc">Everything booked, plus local support.</p>
+        <ul>
+          <li>Everything in Explorer</li>
+          <li>Transfers &amp; local guides</li>
+          <li>24/7 trip contact</li>
+        </ul>
+        <span class="journey-price">from $3,200 <small>per person</small></span>
+        <a href="booking.html" class="btn btn-journey">Start here</a>
+      </div>
+
+      <div class="journey-card">
+        <h3>Bespoke</h3>
+        <p class="journey-desc">Planned from a blank page.</p>
+        <ul>
+          <li>Everything in Voyager</li>
+          <li>Private guide</li>
+          <li>Unlimited revisions</li>
+        </ul>
+        <span class="journey-price">custom quote</span>
+        <a href="contact.html" class="btn btn-outline-journey">Start here</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FINAL CTA ============ -->
+<section class="contact" id="contact">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="card-panel cta-photo p-4 p-lg-5 text-center" style="--bg:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');">
+      <p class="eyebrow-plain" style="color: var(--sand);">Let's start</p>
+      <h2 style="color:#fff; margin-inline:auto;">Ready when you are</h2>
+      <p style="color: rgba(251,250,247,0.8); max-width:40ch; margin: 0 auto 2rem;">Tell us about the trip. We reply within a day.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="contact.html" class="btn btn-plan" style="background: var(--sand); color: var(--ink);">Talk to a planner</a>
+        <a href="booking.html" class="btn btn-plan" style="background: transparent; border: 1.5px solid rgba(251,250,247,0.5); color:#fff;">Start a booking</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <a class="brand brand--footer" href="#top">
+          <span class="brand-mark">S</span>
+          <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
         </a>
-        <a href="packages.html" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop"
-            alt="Whitewashed buildings in Santorini">
-          <div class="dest-info">
-            <h3>Santorini</h3>
-            <p>Island-hopping</p><span class="dest-price">from $3,100</span>
-          </div>
-        </a>
-        <a href="packages.html" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop"
-            alt="Temple gate in Kyoto">
-          <div class="dest-info">
-            <h3>Kyoto</h3>
-            <p>Old Japan</p><span class="dest-price">from $3,650</span>
-          </div>
-        </a>
-        <a href="packages.html" class="dest-card dest-card--wide">
-          <img src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=1000&auto=format&fit=crop"
-            alt="Mountains in Patagonia">
-          <div class="dest-info">
-            <h3>Patagonia</h3>
-            <p>Glaciers &amp; granite</p><span class="dest-price">from $4,200</span>
-          </div>
-        </a>
+        <p class="footer-note">Private, fully-guided trips.</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4>Explore</h4>
+        <a href="packages.html">Packages</a>
+        <a href="hotels.html">Hotels</a>
+        <a href="visa.html">Visa Processing</a>
+        <a href="booking.html">Book a package</a>
+        <a href="hotel-booking.html">Book a hotel</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h4>Company</h4>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="col-lg-4">
+        <h4>Stay in the loop</h4>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
+        </form>
+        <div class="newsletter-note" id="newsletterNote"></div>
+        <div class="pay-accept" aria-label="Accepted payments"><span>bKash</span><span>Nagad</span><span>Visa</span><span>Mastercard</span><span>Bank</span></div>
       </div>
     </div>
-  </section>
-
-  <!-- ============ WHY US ============ -->
-  <section class="experiences" id="why">
-    <div class="container-fluid px-4 px-lg-5">
-      <div class="row align-items-center gy-5">
-        <div class="col-lg-5">
-          <div class="why-img">
-            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1000&auto=format&fit=crop"
-              alt="Mountain valley at sunrise">
-            <div class="why-badge"><strong>98%</strong>travel with us again</div>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <p class="eyebrow-plain">Why Solstice</p>
-          <h2>Everything a trip needs, in one place</h2>
-          <div class="why-list">
-            <div class="why-item"><i class="bi bi-map"></i>
-              <div>
-                <h3>Hand-built routes</h3>
-                <p>No templates.</p>
-              </div>
-            </div>
-            <div class="why-item"><i class="bi bi-person-vcard"></i>
-              <div>
-                <h3>In-house visas</h3>
-                <p>Handled with your booking.</p>
-              </div>
-            </div>
-            <div class="why-item"><i class="bi bi-calendar-check"></i>
-              <div>
-                <h3>Simple booking</h3>
-                <p>Book online in minutes.</p>
-              </div>
-            </div>
-            <div class="why-item"><i class="bi bi-headset"></i>
-              <div>
-                <h3>Help on the road</h3>
-                <p>A local contact on call.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Solstice Travel Co. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ============ POPULAR PACKAGES (tabs) ============ -->
-  <section class="popular" id="popular">
-    <div class="container-fluid px-4 px-lg-5">
-      <div class="row align-items-end gy-2 mb-4">
-        <div class="col-lg-8">
-          <p class="eyebrow-plain">Popular right now</p>
-          <h2 class="mb-0">Pick a trip style</h2>
-        </div>
-        <div class="col-lg-4 text-lg-end">
-          <a href="packages.html" style="color:var(--teal); font-weight:700;">See all packages &rarr;</a>
-        </div>
-      </div>
-      <div class="filter-scroll mb-4">
-        <div class="filter-bar" id="homeTabs" role="tablist" aria-label="Trip style">
-          <button class="filter-btn is-active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="beach">Beach</button>
-          <button class="filter-btn" data-filter="adventure">Adventure</button>
-          <button class="filter-btn" data-filter="cultural">Cultural</button>
-          <button class="filter-btn" data-filter="honeymoon">Honeymoon</button>
-          <button class="filter-btn" data-filter="family">Family</button>
-        </div>
-      </div>
-      <div class="package-grid" id="homePackageGrid">
-        <!-- Same cards as packages.html; the tabs show the first 3 that match. -->
-        <article class="package-card" data-id="bali-explorer" data-category="beach" data-price="2450"
-          data-duration="7 nights">
-          <div class="package-card__img">
-            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop"
-              alt="Bali &amp; the Lesser Sundas" loading="lazy">
-            <span class="package-card__badge">Beach</span>
-          </div>
-          <div class="package-card__body">
-            <h3>Bali &amp; the Lesser Sundas</h3>
-            <div class="package-card__meta"><span><i class="bi bi-clock"></i>7 nights</span></div>
-            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Rice terraces, temples and reef time.</p>
-            <div class="package-card__foot">
-              <span class="package-card__price">$2,450<small>per person</small></span>
-              <div class="package-card__actions"><a class="btn-ghost"
-                  href="packages.html?view=bali-explorer">Details</a>
-                <a href="booking.html?package=bali-explorer" class="btn-sm-solid">Book</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card" data-id="santorini-cyclades" data-category="honeymoon" data-price="3100"
-          data-duration="8 nights">
-          <div class="package-card__img">
-            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop"
-              alt="Santorini &amp; the Cyclades" loading="lazy">
-            <span class="package-card__badge">Honeymoon</span>
-          </div>
-          <div class="package-card__body">
-            <h3>Santorini &amp; the Cyclades</h3>
-            <div class="package-card__meta"><span><i class="bi bi-clock"></i>8 nights</span></div>
-            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Three islands, off cruise-ship hours.</p>
-            <div class="package-card__foot">
-              <span class="package-card__price">$3,100<small>per person</small></span>
-              <div class="package-card__actions"><a class="btn-ghost"
-                  href="packages.html?view=santorini-cyclades">Details</a>
-                <a href="booking.html?package=santorini-cyclades" class="btn-sm-solid">Book</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card" data-id="kyoto-kii" data-category="cultural" data-price="3650"
-          data-duration="9 nights">
-          <div class="package-card__img">
-            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop"
-              alt="Kyoto &amp; the Kii Peninsula" loading="lazy">
-            <span class="package-card__badge">Cultural</span>
-          </div>
-          <div class="package-card__body">
-            <h3>Kyoto &amp; the Kii Peninsula</h3>
-            <div class="package-card__meta"><span><i class="bi bi-clock"></i>9 nights</span></div>
-            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Old Japan, temples before the crowds.</p>
-            <div class="package-card__foot">
-              <span class="package-card__price">$3,650<small>per person</small></span>
-              <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=kyoto-kii">Details</a>
-                <a href="booking.html?package=kyoto-kii" class="btn-sm-solid">Book</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card" data-id="patagonia" data-category="adventure" data-price="4200"
-          data-duration="10 nights">
-          <div class="package-card__img">
-            <img src="https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=1000&auto=format&fit=crop"
-              alt="Patagonia" loading="lazy">
-            <span class="package-card__badge">Adventure</span>
-          </div>
-          <div class="package-card__body">
-            <h3>Patagonia</h3>
-            <div class="package-card__meta"><span><i class="bi bi-clock"></i>10 nights</span></div>
-            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Glaciers, granite towers, real trekking.
-            </p>
-            <div class="package-card__foot">
-              <span class="package-card__price">$4,200<small>per person</small></span>
-              <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=patagonia">Details</a>
-                <a href="booking.html?package=patagonia" class="btn-sm-solid">Book</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card" data-id="marrakech-atlas" data-category="cultural" data-price="1980"
-          data-duration="6 nights">
-          <div class="package-card__img">
-            <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=900&auto=format&fit=crop"
-              alt="Marrakech &amp; the Atlas" loading="lazy">
-            <span class="package-card__badge">Cultural</span>
-          </div>
-          <div class="package-card__body">
-            <h3>Marrakech &amp; the Atlas</h3>
-            <div class="package-card__meta"><span><i class="bi bi-clock"></i>6 nights</span></div>
-            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Souks, desert camp and Atlas villages.</p>
-            <div class="package-card__foot">
-              <span class="package-card__price">$1,980<small>per person</small></span>
-              <div class="package-card__actions"><a class="btn-ghost"
-                  href="packages.html?view=marrakech-atlas">Details</a>
-                <a href="booking.html?package=marrakech-atlas" class="btn-sm-solid">Book</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card" data-id="swiss-alps" data-category="family" data-price="3850"
-          data-duration="7 nights">
-          <div class="package-card__img">
-            <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=900&auto=format&fit=crop"
-              alt="Swiss Alps Family Trail" loading="lazy">
-            <span class="package-card__badge">Family</span>
-          </div>
-          <div class="package-card__body">
-            <h3>Swiss Alps Family Trail</h3>
-            <div class="package-card__meta"><span><i class="bi bi-clock"></i>7 nights</span></div>
-            <p class="section-note" style="font-size:.9rem;margin-bottom:0;">Cable cars and lake towns, kid-friendly.
-            </p>
-            <div class="package-card__foot">
-              <span class="package-card__price">$3,850<small>per person</small></span>
-              <div class="package-card__actions"><a class="btn-ghost" href="packages.html?view=swiss-alps">Details</a>
-                <a href="booking.html?package=swiss-alps" class="btn-sm-solid">Book</a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <!-- ============ PACKAGES / JOURNEYS ============ -->
-  <section class="journeys" id="journeys">
-    <div class="container-fluid px-4 px-lg-5">
-      <p class="eyebrow-plain">Choose your level of help</p>
-      <h2>Three ways to start</h2>
-
-      <div class="journey-cards">
-        <div class="journey-card">
-          <h3>Explorer</h3>
-          <p class="journey-desc">A solid route, you handle the details.</p>
-          <ul>
-            <li>Full itinerary</li>
-            <li>Hand-picked stays</li>
-            <li>Email support</li>
-          </ul>
-          <span class="journey-price">from $1,800 <small>per person</small></span>
-          <a href="booking.html" class="btn btn-outline-journey">Start here</a>
-        </div>
-
-        <div class="journey-card journey-card--featured">
-          <span class="journey-tag">Most requested</span>
-          <h3>Voyager</h3>
-          <p class="journey-desc">Everything booked, plus local support.</p>
-          <ul>
-            <li>Everything in Explorer</li>
-            <li>Transfers &amp; local guides</li>
-            <li>24/7 trip contact</li>
-          </ul>
-          <span class="journey-price">from $3,200 <small>per person</small></span>
-          <a href="booking.html" class="btn btn-journey">Start here</a>
-        </div>
-
-        <div class="journey-card">
-          <h3>Bespoke</h3>
-          <p class="journey-desc">Planned from a blank page.</p>
-          <ul>
-            <li>Everything in Voyager</li>
-            <li>Private guide</li>
-            <li>Unlimited revisions</li>
-          </ul>
-          <span class="journey-price">custom quote</span>
-          <a href="contact.html" class="btn btn-outline-journey">Start here</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FINAL CTA ============ -->
-  <section class="contact" id="contact">
-    <div class="container-fluid px-4 px-lg-5">
-      <div class="card-panel cta-photo p-4 p-lg-5 text-center"
-        style="--bg:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');">
-        <p class="eyebrow-plain" style="color: var(--sand);">Let's start</p>
-        <h2 style="color:#fff; margin-inline:auto;">Ready when you are</h2>
-        <p style="color: rgba(251,250,247,0.8); max-width:40ch; margin: 0 auto 2rem;">Tell us about the trip. We reply
-          within a day.</p>
-        <div class="d-flex justify-content-center gap-3 flex-wrap">
-          <a href="contact.html" class="btn btn-plan" style="background: var(--sand); color: var(--ink);">Talk to a
-            planner</a>
-          <a href="booking.html" class="btn btn-plan"
-            style="background: transparent; border: 1.5px solid rgba(251,250,247,0.5); color:#fff;">Start a booking</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="container-fluid px-4 px-lg-5">
-      <div class="row gy-4">
-        <div class="col-lg-4">
-          <a class="brand brand--footer" href="#top">
-            <span class="brand-mark">S</span>
-            <span class="brand-word">Solstice<em>Travel&nbsp;Co.</em></span>
-          </a>
-          <p class="footer-note">Private, fully-guided trips.</p>
-        </div>
-        <div class="col-6 col-lg-2">
-          <h4>Explore</h4>
-          <a href="packages.html">Packages</a>
-          <a href="visa.html">Visa Processing</a>
-          <a href="booking.html">Book a trip</a>
-        </div>
-        <div class="col-6 col-lg-2">
-          <h4>Company</h4>
-          <a href="about.html">About us</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <div class="col-lg-4">
-          <h4>Stay in the loop</h4>
-          <form class="newsletter" id="newsletterForm">
-            <input type="email" placeholder="Your email" required>
-            <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
-          </form>
-          <div class="newsletter-note" id="newsletterNote"></div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; <span id="year"></span> Solstice Travel Co. All rights reserved.</span>
-        <div class="footer-social">
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- jQuery + JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="assets/script.js"></script>
+<!-- jQuery + JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
-
 </html>

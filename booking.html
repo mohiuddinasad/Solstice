@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -25,21 +25,33 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links d-none d-lg-flex align-items-center ms-auto" id="navLinks">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="">Home</a>
       <a href="packages.html">Packages</a>
+      <a href="hotels.html">Hotels</a>
       <a href="visa.html">Visa Processing</a>
       <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
-      <a href="booking.html" class="btn btn-plan">Book Now</a>
+      <div class="nav-book">
+        <button type="button" class="btn btn-plan nav-book-btn" aria-haspopup="true" aria-expanded="false">Book Now <i class="bi bi-chevron-down"></i></button>
+        <div class="book-menu" role="menu">
+          <a href="booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-compass"></i></span><span><strong>Tour package</strong><small>Guided trips &amp; holidays</small></span></a>
+          <a href="hotel-booking.html" role="menuitem"><span class="bm-icon"><i class="bi bi-building"></i></span><span><strong>Hotel</strong><small>Rooms &amp; resorts in Bangladesh</small></span></a>
+        </div>
+      </div>
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="packages.html">Packages</a>
+    <a href="hotels.html">Hotels</a>
     <a href="visa.html">Visa Processing</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
-    <a href="booking.html" class="btn btn-plan mt-3">Book Now</a>
+    <div class="mobile-book">
+      <span class="mb-label">Book now</span>
+      <a href="booking.html" class="btn btn-plan"><i class="bi bi-compass"></i> Tour package</a>
+      <a href="hotel-booking.html" class="btn btn-outline-journey"><i class="bi bi-building"></i> Hotel</a>
+    </div>
   </div>
 </header>
 
@@ -55,6 +67,11 @@
   <div class="container-fluid px-4 px-lg-5">
 
     <!-- ============ PROGRESS ============ -->
+    <div class="booking-switch" role="navigation" aria-label="Booking type">
+      <a href="booking.html" class="is-active" aria-current="page"><i class="bi bi-compass"></i> Tour package</a>
+      <a href="hotel-booking.html"><i class="bi bi-building"></i> Hotel</a>
+    </div>
+
     <div class="wizard-progress" id="wizardProgress" style="--p:0;">
       <div class="wizard-step-indicator is-active" data-step="1"><span class="dot">1</span><span class="label">Trip details</span></div>
       <div class="wizard-step-indicator" data-step="2"><span class="dot">2</span><span class="label">Travelers</span></div>
@@ -257,8 +274,10 @@
       <div class="col-6 col-lg-2">
         <h4>Explore</h4>
         <a href="packages.html">Packages</a>
+        <a href="hotels.html">Hotels</a>
         <a href="visa.html">Visa Processing</a>
-        <a href="booking.html">Book a trip</a>
+        <a href="booking.html">Book a package</a>
+        <a href="hotel-booking.html">Book a hotel</a>
       </div>
       <div class="col-6 col-lg-2">
         <h4>Company</h4>
@@ -272,6 +291,7 @@
           <button type="submit" aria-label="Subscribe"><i class="bi bi-arrow-right"></i></button>
         </form>
         <div class="newsletter-note" id="newsletterNote"></div>
+        <div class="pay-accept" aria-label="Accepted payments"><span>bKash</span><span>Nagad</span><span>Visa</span><span>Mastercard</span><span>Bank</span></div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -286,6 +306,6 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="assets/script.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
