@@ -34,7 +34,6 @@ $(function () {
   const $header = $('#siteHeader');
   const $bar = $('<div class="scroll-progress" aria-hidden="true"></div>').appendTo('body');
   $('<a class="fab fab-wa" href="https://wa.me/8801000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>').appendTo('body');
-  const $top = $('<button type="button" class="fab fab-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>').appendTo('body');
 
   /* broken image -> soft gradient placeholder instead of a broken icon */
   const fallbackImg = 'data:image/svg+xml;utf8,' + encodeURIComponent(
@@ -44,20 +43,7 @@ $(function () {
     if (t && t.tagName === 'IMG' && t.src !== fallbackImg) { t.onerror = null; t.src = fallbackImg; }
   }, true);
 
-  let ticking = false;
-  function onScroll() {
-    ticking = false;
-    const st = $win.scrollTop();
-    const max = $(document).height() - $win.height();
-    $bar.css('transform', 'scaleX(' + (max > 0 ? Math.min(st / max, 1) : 0) + ')');
-    $header.toggleClass('is-scrolled', st > 10);
-    $top.toggleClass('is-visible', st > 500);
-  }
-  $win.on('scroll resize', function () {
-    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
-  });
-  onScroll();
-  $top.on('click', function () { scrollToY(0, 600); });
+  
 
   /* mobile menu */
   const $navToggle = $('#navToggle');
